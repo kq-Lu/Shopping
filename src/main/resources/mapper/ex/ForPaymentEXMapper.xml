@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.shopping.mapper.ex.ForPaymentEXMapper">
 
+    <resultMap id="aaa" type="com.briup.shopping.bean.ex.ForPaymentEX">
+        <id column="id" property="id"></id>
+        <result column="goodsName" property="goodsName"></result>
+        <result column="totalPrice" property="totalPrice"></result>
+        <result column="userName" property="userName"></result>
+        <result column="address" property="address"></result>
+        <result column="phone" property="phone"></result>
+        <result column="payment" property="payment"></result>
+        <result column="date" property="date"></result>
+        <result column="status" property="status"></result>
+
+    </resultMap>
+
+    <select id="findForPayment" resultMap="aaa">
+        select o.id id,g.name goodsName,o.totalprice totalPrice,c.username userName,c.address address,c.phone phone,p.name payment,o.date date,s.status status
+        from a_order o,a_customer c,a_payment p,a_status s,a_goods g
+        where o.customer_id=c.id and o.payment_id=p.id and o.goods_id=g.id and s.status=3
+    </select>
 </mapper>

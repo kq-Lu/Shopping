@@ -3,14 +3,14 @@ package com.briup.shopping.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class G_OExample {
+public class GOExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public G_OExample() {
+    public GOExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

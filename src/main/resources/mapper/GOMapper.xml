@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.briup.shopping.mapper.G_OMapper">
-  <resultMap id="BaseResultMap" type="com.briup.shopping.bean.G_O">
+<mapper namespace="com.briup.shopping.mapper.GOMapper">
+  <resultMap id="BaseResultMap" type="com.briup.shopping.bean.GO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
@@ -67,13 +67,13 @@
   <sql id="Base_Column_List">
     id, order_id, goods_id
   </sql>
-  <select id="selectByExample" parameterType="com.briup.shopping.bean.G_OExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.briup.shopping.bean.GOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from a_g-o
+    from a_go
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,27 +84,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from a_g-o
+    from a_go
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from a_g-o
+    delete from a_go
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.briup.shopping.bean.G_OExample">
-    delete from a_g-o
+  <delete id="deleteByExample" parameterType="com.briup.shopping.bean.GOExample">
+    delete from a_go
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.briup.shopping.bean.G_O">
-    insert into a_g-o (id, order_id, goods_id
+  <insert id="insert" parameterType="com.briup.shopping.bean.GO">
+    insert into a_go (id, order_id, goods_id
       )
     values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.briup.shopping.bean.G_O">
-    insert into a_g-o
+  <insert id="insertSelective" parameterType="com.briup.shopping.bean.GO">
+    insert into a_go
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -128,14 +128,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.briup.shopping.bean.G_OExample" resultType="java.lang.Long">
-    select count(*) from a_g-o
+  <select id="countByExample" parameterType="com.briup.shopping.bean.GOExample" resultType="java.lang.Long">
+    select count(*) from a_go
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update a_g-o
+    update a_go
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -152,7 +152,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update a_g-o
+    update a_go
     set id = #{record.id,jdbcType=INTEGER},
       order_id = #{record.orderId,jdbcType=INTEGER},
       goods_id = #{record.goodsId,jdbcType=INTEGER}
@@ -160,8 +160,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.briup.shopping.bean.G_O">
-    update a_g-o
+  <update id="updateByPrimaryKeySelective" parameterType="com.briup.shopping.bean.GO">
+    update a_go
     <set>
       <if test="orderId != null">
         order_id = #{orderId,jdbcType=INTEGER},
@@ -172,8 +172,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.briup.shopping.bean.G_O">
-    update a_g-o
+  <update id="updateByPrimaryKey" parameterType="com.briup.shopping.bean.GO">
+    update a_go
     set order_id = #{orderId,jdbcType=INTEGER},
       goods_id = #{goodsId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
