@@ -6,16 +6,19 @@ import com.briup.shopping.service.IForPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ForPaymentServiceImpl implements IForPaymentService {
 
     @Autowired
     private ForPaymentEXMapper forPaymentEXMapper;
     @Override
-    public ForPaymentEX findForPayment(String status) throws RuntimeException {
+    public List<ForPaymentEX> findForPayment(String status) throws RuntimeException {
 
         if ("待支付".equals(status)){
-            return forPaymentEXMapper.findForPayment();
+            return forPaymentEXMapper.findForPayment(3);
+
         }
         return null;
     }

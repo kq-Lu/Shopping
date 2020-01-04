@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.SendGoodsEXMapper">
+
+    <resultMap id="bbb" type="com.briup.shopping.bean.ex.SendGoodsEX" >
+        <id column="id" property="id"></id>
+        <result property="goodsName" column="goodsName"></result>
+        <result column="totalPrice" property="totalPrice"></result>
+        <result column="userName" property="userName"></result>
+        <result column="address" property="address"></result>
+        <result column="phone" property="phone"></result>
+        <result column="expressMethod" property="expressMethod"></result>
+        <result column="date" property="date"></result>
+    </resultMap>
+    <select id="findSendGoods" resultMap="bbb">
+        select  o.id id,o.totalprice totalPrice,c.username userName,c.address address,c.phone phone,o.date date,g.name goodsName,e.name expressMethod
+        from a_order o,a_customer c,a_goods g,a_express e
+        where o.customer_id=c.id and g.id=(select goods_id from a_go where order_id = #{id}) and o.express_id=e.id and o.status_id=#{status}
+    </select>
+</mapper>

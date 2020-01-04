@@ -11,13 +11,13 @@
         <result column="phone" property="phone"></result>
         <result column="payment" property="payment"></result>
         <result column="date" property="date"></result>
-        <result column="status" property="status"></result>
 
     </resultMap>
 
     <select id="findForPayment" resultMap="aaa">
-        select o.id id,g.name goodsName,o.totalprice totalPrice,c.username userName,c.address address,c.phone phone,p.name payment,o.date date,s.status status
-        from a_order o,a_customer c,a_payment p,a_status s,a_goods g
-        where o.customer_id=c.id and o.payment_id=p.id and o.goods_id=g.id and s.status=3
+        select  o.id id,o.totalprice totalPrice,c.username userName,c.address address,c.phone phone,p.name payment,o.date date,g.name goodsName
+        from a_order o,a_customer c,a_payment p,a_goods g
+        where o.customer_id=c.id and o.payment_id=p.id and  g.id=(select goods_id from a_go where order_id = #{id}) and o.status_id=#{status}
     </select>
+
 </mapper>

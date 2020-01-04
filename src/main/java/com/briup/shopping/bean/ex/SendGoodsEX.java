@@ -1,20 +1,17 @@
 package com.briup.shopping.bean.ex;
 
-import com.briup.shopping.bean.Goods;
-
 import java.io.Serializable;
 import java.util.Date;
 
-public class ForPaymentEX implements Serializable {
+public class SendGoodsEX implements Serializable {
     private int id;
     private String goodsName;
     private double totalPrice;
     private String userName;
     private String address;
     private int phone;
-    private String payment;
+    private String expressMethod;
     private Date date;
-
 
     public int getId() {
         return id;
@@ -64,12 +61,12 @@ public class ForPaymentEX implements Serializable {
         this.phone = phone;
     }
 
-    public String getPayment() {
-        return payment;
+    public String getExpressMethod() {
+        return expressMethod;
     }
 
-    public void setPayment(String payment) {
-        this.payment = payment;
+    public void setExpressMethod(String expressMethod) {
+        this.expressMethod = expressMethod;
     }
 
     public Date getDate() {
@@ -79,6 +76,4 @@ public class ForPaymentEX implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 }
