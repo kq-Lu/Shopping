@@ -1,13 +1,16 @@
 package com.briup.shopping.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@ApiModel
 public class Comment implements Serializable {
     private Integer id;
 
     private String description;
-
+@ApiModelProperty(hidden = true)
     private Date date;
 
     private Integer orderId;

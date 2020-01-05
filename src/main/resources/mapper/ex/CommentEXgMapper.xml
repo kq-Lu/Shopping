@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.CommentEXgMapper">
+    <resultMap id="aaa" type="com.briup.shopping.bean.ex.CommentEXg">
+        <id column="id" property="id"></id>
+        <result property="description" column="description"></result>
+        <result property="name" column="gname"></result>
+        <result property="uname" column="cname"></result>
+        <result property="dates" column="dates"></result>
+    </resultMap>
+    <select id="findAll" resultMap="aaa">
+        select c.id id,c.description description,g.name gname,c.date dates,u.username cname
+        from a_comment c,a_order o,a_goods g,a_go gos,a_customer u
+        where c.order_id=o.id and g.id=gos.goods_id and o.id=gos.order_id and u.id=o.customer_id
+    </select>
+
+</mapper>
