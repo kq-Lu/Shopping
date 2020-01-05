@@ -105,6 +105,9 @@
       #{orderId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.shopping.bean.Comment">
+<selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+  select LAST_INSERT_ID()
+</selectKey>
     insert into a_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

@@ -25,11 +25,12 @@ public class CommentServiceImplg implements ICommentServiceg {
 
     @Override
     public void saveOrupdate(Comment comment) throws RuntimeException {
+        comment.setDate(new Date());
         if(comment==null){
             throw new RuntimeException("参数为空");
         }
         else if(comment.getId()==null){
-            comment.setDate(new Date());
+
             commentMapper.insert(comment);
         }
         else {
