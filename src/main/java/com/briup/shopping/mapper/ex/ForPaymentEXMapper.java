@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface ForPaymentEXMapper {
     List<ForPaymentEX> findForPayment(int status);
+    void deleteOrder(int id);
+    void deleteGO(int id);
+
+    void GoPayment(int id);
 }

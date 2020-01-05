@@ -20,4 +20,14 @@
         where o.customer_id=c.id and o.payment_id=p.id and  g.id=(select goods_id from a_go where order_id = #{id}) and o.status_id=#{status}
     </select>
 
+    <delete id="deleteOrder" parameterType="com.briup.shopping.bean.Order">
+        delete from a_order where id=#{id}
+    </delete>
+    <delete id="deleteGO" parameterType="com.briup.shopping.bean.GO">
+        delete from a_go where order_id=#{id}
+    </delete>
+
+    <update id="GoPayment" parameterType="com.briup.shopping.bean.Order">
+        update a_order set status_id=2 where id=#{id}
+    </update>
 </mapper>

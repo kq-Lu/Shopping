@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ISendGoodsService {
     List<SendGoodsEX> findSendGoods(String status) throws RuntimeException;
+
+    void SendOut(int id) throws RuntimeException;
 }

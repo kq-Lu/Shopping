@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.ReceivedEXMapper">
+    <resultMap id="ccc" type="com.briup.shopping.bean.ex.ReceivedEX">
+        <id column="id" property="id"></id>
+        <result property="goodsName" column="goodsName"></result>
+        <result property="totalPrice" column="totalPrice"></result>
+        <result property="userName" column="userName"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+
+    </resultMap>
+
+    <select id="findReceived" resultMap="ccc">
+        select o.id id,g.name goodsName,o.totalprice totalPrice,c.username userName,c.address address,c.phone phone
+        from a_order o,a_customer c,a_goods g
+        where o.customer_id=c.id and g.id=(select goods_id from a_go where order_id=#{id}) and o.status_id=#{status}
+    </select>
+
+    <delete id="deleteReceived" parameterType="com.briup.shopping.bean.Order">
+         delete from a_order where id=#{id}
+    </delete>
+    <delete id="deleteGO" parameterType="com.briup.shopping.bean.GO">
+         delete from a_go where a_go.order_id=#{id}
+    </delete>
+    <delete id="deleteComment" parameterType="com.briup.shopping.bean.Comment">
+         delete from a_comment where a_comment.order_id=#{id}
+    </delete>
+
+
+    <insert id="insertDescription" parameterType="com.briup.shopping.bean.Comment">
+        insert into a_comment(description,date,order_id) values (#{desc},#{date},#{id})
+    </insert>
+    <delete id="deleteDescription" parameterType="com.briup.shopping.bean.Comment">
+        delete  from a_comment where order_id=#{id}
+    </delete>
+
+</mapper>

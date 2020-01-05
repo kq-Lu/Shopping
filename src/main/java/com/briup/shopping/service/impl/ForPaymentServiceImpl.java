@@ -22,4 +22,24 @@ public class ForPaymentServiceImpl implements IForPaymentService {
         }
         return null;
     }
+
+//删除未支付的订单和关联表a_go
+    @Override
+    public void deleteOrderGO(int id) throws RuntimeException {
+        forPaymentEXMapper.deleteOrder(id);
+        forPaymentEXMapper.deleteGO(id);
+    }
+
+    @Override
+    public void deleteMore(int[] ids) throws RuntimeException {
+        for(int i=0;i<ids.length;i++){
+            forPaymentEXMapper.deleteOrder(ids[i]);
+            forPaymentEXMapper.deleteGO(ids[i]);
+        }
+    }
+
+    @Override
+    public void GoPayment(int id) throws RuntimeException {
+        forPaymentEXMapper.GoPayment(id);
+    }
 }

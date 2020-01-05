@@ -20,4 +20,9 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
         }
         return null;
     }
+
+    @Override
+    public void SendOut(int id) throws RuntimeException {
+        sendGoodsEXMapper.SendOut(id);
+    }
 }
