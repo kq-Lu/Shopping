@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.OrderEXgMapper">
+    <resultMap id="abn" type="com.briup.shopping.bean.ex.OrderEXg">
+        <id property="id" column="id"></id>
+        <result property="code" column="code"></result>
+        <result property="tprice" column="tprice"></result>
+        <result property="uname" column="uname"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+        <result property="statu" column="statu"></result>
+        <result property="dates" column="dates"></result>
+        <collection property="list" column="id" ofType="com.briup.shopping.bean.ex.OrderEXg" select="selectGoods1"></collection>
+    </resultMap>
+    <select id="findAll" resultMap="abn">
+        select o.id id,o.code code,o.totalprice tprice,o.date dates,c.username uname,c.address address,c.phone phone,s.status statu
+        from a_order o,a_customer c,a_status s
+        where o.customer_id=c.id and o.status_id=s.id
+    </select>
+    <select id="selectGoods1" resultType="com.briup.shopping.bean.ex.SpEX">
+        select g.name sname
+        from a_goods g,a_go gos
+        where  g.id=gos.goods_id and gos.order_id=#{id}
+    </select>
+    <resultMap id="aaa" type="com.briup.shopping.bean.ex.OrderEXg">
+        <id property="id" column="id"></id>
+        <result property="code" column="code"></result>
+        <result property="tprice" column="tprice"></result>
+        <result property="uname" column="uname"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+        <result property="statu" column="statu"></result>
+        <result property="dates" column="dates"></result>
+        <collection property="list" column="id" ofType="com.briup.shopping.bean.ex.OrderEXg" select="selectGoods2"></collection>
+    </resultMap>
+    <select id="selectById" resultMap="aaa">
+        select o.id id,o.code code,o.totalprice tprice,o.date dates,c.username uname,c.address address,c.phone phone,s.status statu
+        from a_order o,a_customer c,a_status s
+        where o.customer_id=c.id and o.status_id=s.id and o.id=#{id}
+    </select>
+    <select id="selectGoods2" resultType="com.briup.shopping.bean.ex.SpEX">
+        select g.name sname
+        from a_goods g,a_go gos
+        where  g.id=gos.goods_id and gos.order_id=#{id}
+    </select>
+
+</mapper>

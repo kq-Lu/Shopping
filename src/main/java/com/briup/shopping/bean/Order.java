@@ -1,15 +1,20 @@
 package com.briup.shopping.bean;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@ApiModel
 public class Order implements Serializable {
     private Integer id;
-
+@ApiModelProperty(hidden = true)
     private Integer code;
 
     private Double totalprice;
-
+    @ApiModelProperty(hidden = true)
     private Date date;
 
     private Integer customerId;
