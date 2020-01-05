@@ -62,6 +62,14 @@ public class CustomerlController {
         }
         return MessageUtil.success("删除成功");
     }
+    @PostMapping("/count")
+    @ApiOperation(value = "统计区域顾客人数")
+    @ApiImplicitParam(name = "key",value = "请填入省份的名字",paramType = "query",dataType = "String")
+    public Message count(String key){
+       List<Customer> list=customerlService.findByAddress(key);
+
+        return MessageUtil.success(key+"省的顾客人数为："+list.size());
+    }
 }
 
 

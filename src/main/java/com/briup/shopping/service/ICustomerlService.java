@@ -9,5 +9,5 @@ public interface ICustomerlService {
     List<Customer> search(String word,String phone) throws RuntimeException;
     void saveOrUpdate(Customer customer) throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
-
+    List<Customer> findByAddress(String key) throws RuntimeException;
 }

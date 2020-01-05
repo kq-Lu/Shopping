@@ -9,5 +9,5 @@ public interface CustomerlMapper {
     List<Customer> search(String word,String phone);
     List<Customer> selectByWord(String word);
     List<Customer> selectByPhone(String phone);
-
+    List<Customer> findByAddress(String key);
 }

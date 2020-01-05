@@ -78,4 +78,29 @@ public class CustomerlServiceImpl implements ICustomerlService {
     public void deleteById(int id) throws RuntimeException {
         customerMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<Customer> findByAddress(String key) throws RuntimeException {
+        key=key==null ? "":key;
+        if (key==null||"".equals(key)){
+
+            throw new RuntimeException("请填入省份名称");
+
+        }else if ("陕西".equals(key)||"山西".equals(key)||"河北".equals(key)||"辽宁".equals(key)||"吉林".equals(key)||"黑龙江".equals(key)||"江苏".equals(key)
+        ||"浙江".equals(key)||"安徽".equals(key)||"福建".equals(key)||"山东".equals(key)||"江西".equals(key)||"湖北".equals(key)||"河南".equals(key)||
+        "湖南".equals(key)||"海南".equals(key)||"广东".equals(key)||"四川".equals(key)||"云南".equals(key)||"贵州".equals(key)||"青海".equals(key)
+        ||"甘肃".equals(key)||"台湾".equals(key)||"广西".equals(key)||"内蒙古".equals(key)||"新疆".equals(key)||"宁夏".equals(key)||"西藏".equals(key)
+        ||"北京".equals(key)||"上海".equals(key)||"重庆".equals(key)||"天津".equals(key)||"香港".equals(key)||"澳门".equals(key)){
+
+            key= key+"%";
+
+            return customerlMapper.findByAddress(key);
+        }else {
+            throw new RuntimeException("请输入省份名称");
+
+
+
+        }
+
+    }
 }

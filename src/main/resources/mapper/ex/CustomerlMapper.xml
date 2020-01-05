@@ -17,4 +17,7 @@
         insert into a_customer
     </insert>
 
+    <select id="findByAddress" resultType="com.briup.shopping.bean.Customer">
+        select * from a_customer where address like #{key}
+    </select>
 </mapper>
