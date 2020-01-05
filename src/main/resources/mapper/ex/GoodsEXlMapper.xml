@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.GoodsEXlMapper">
+    <resultMap id="abn" type="com.briup.shopping.bean.ex.GoodsEXl">
+        <id column="id" property="id"></id>
+        <result property="name" column="name"></result>
+        <result column="description" property="description"></result>
+        <result property="storage" column="storage"></result>
+        <result column="price" property="price"></result>
+        <result column="cname" property="cname"></result>
+       <!-- <association property="category" select="selectcategory" column="category_id"></association>-->
+    </resultMap>
+    <select id="findAll" resultMap="abn">
+        select g.*,c.name cname from a_goods g,a_category c where g.category_id=c.id
+    </select>
+   <!-- <select id="selectcategory" resultType="com.briup.shopping.bean.Category">
+        select * from a_category where id=#{category_id}
+    </select>-->
+    <select id="findByWord" resultMap="abn">
+        select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and (g.name like #{word} or c.name like #{word}) and g.price>=#{price1} and #{price2}>=g.price
+    </select>
+    <select id="findByKey" resultMap="abn">
+        select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and (g.name like #{word} or c.name like #{word})
+    </select>
+    <select id="findByLowPrice" resultMap="abn">
+        select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and g.price>=#{p1}
+    </select>
+    <select id="findByHighPrice" resultMap="abn">
+         select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and #{p2}>=g.price
+    </select>
+    <select id="findByWlp" resultMap="abn">
+        select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and (g.name like #{word} or c.name like #{word}) and g.price>=#{price1}
+    </select>
+    <select id="findByWhp" resultMap="abn">
+                select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and (g.name like #{word} or c.name like #{word}) and #{price2}>=g.price
+
+    </select>
+    <select id="findByPrice" resultMap="abn">
+         select g.*,c.name cname  from a_goods g ,a_category c  where g.category_id=c.id and g.price>=#{price1} and #{price2}>=g.price
+    </select>
+    <insert id="saveOrUpdate">
+        insert into a_goods
+    </insert>
+   <insert id="deleteById">
+       delete from a_goods where id=#{id}
+   </insert>
+</mapper>
