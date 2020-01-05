@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.CollectEXMapperzp">
+    <resultMap id="abc" type="com.briup.shopping.mapper.ex.CollectEXMapperzp">
+        <id column="id" property="id"></id>
+        <result column="gname" property="gname"></result>
+        <result column="cname" property="cname"></result>
+        <result column="gprice" property="gprice"></result>
+        <result column="description" property="description"></result>
+    </resultMap>
+    <select id="findAllCollect" resultType="com.briup.shopping.bean.ex.CollectEXzp">
+        select c.id id ,g.name gname ,g.price gprice ,g.description description,co.username cname
+        from a_collect c,a_goods g,a_customer co
+        where c.goods_id=g.id and c.customer_id=co.id
+    </select>
+    <select id="findByWord" resultType="com.briup.shopping.bean.ex.CollectEXzp">
+        select c.id id ,g.name gname ,g.price gprice ,g.description description,co.username cname
+        from a_collect c,a_goods g,a_customer co
+        where c.goods_id=g.id and c.customer_id=co.id and (g.name like #{word} or co.username like #{word})
+    </select>
+</mapper>
