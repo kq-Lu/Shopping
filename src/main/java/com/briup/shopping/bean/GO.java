@@ -11,6 +11,8 @@ public class GO implements Serializable {
 
     private Integer amount;
 
+    private Integer shoppingcarId;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -45,6 +47,14 @@ public class GO implements Serializable {
         this.amount = amount;
     }
 
+    public Integer getShoppingcarId() {
+        return shoppingcarId;
+    }
+
+    public void setShoppingcarId(Integer shoppingcarId) {
+        this.shoppingcarId = shoppingcarId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -55,6 +65,7 @@ public class GO implements Serializable {
         sb.append(", orderId=").append(orderId);
         sb.append(", goodsId=").append(goodsId);
         sb.append(", amount=").append(amount);
+        sb.append(", shoppingcarId=").append(shoppingcarId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
