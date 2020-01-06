@@ -1,5 +1,6 @@
 package com.briup.shopping.bean.ex;
 
+
 import com.briup.shopping.bean.Goods;
 import com.briup.shopping.bean.Order;
 
@@ -11,6 +12,14 @@ public class AmountEXl implements Serializable {
     private String statusorders;
     List<Order> orders;
     List<Goods> goods;
+
+    public List<Goods> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<Goods> goods) {
+        this.goods = goods;
+    }
 
     public String getStatusorders() {
         return statusorders;
@@ -28,11 +37,5 @@ public class AmountEXl implements Serializable {
         this.orders = orders;
     }
 
-    public List<Goods> getGoods() {
-        return goods;
-    }
 
-    public void setGoods(List<Goods> goods) {
-        this.goods = goods;
-    }
 }
