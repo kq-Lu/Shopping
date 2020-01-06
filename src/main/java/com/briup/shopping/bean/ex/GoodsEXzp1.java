@@ -9,7 +9,15 @@ public class GoodsEXzp1 implements Serializable {
 
     private String description;
 
-    private Integer storage;
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public String getName() {
         return name;
@@ -35,11 +43,5 @@ public class GoodsEXzp1 implements Serializable {
         this.description = description;
     }
 
-    public Integer getStorage() {
-        return storage;
-    }
 
-    public void setStorage(Integer storage) {
-        this.storage = storage;
-    }
 }

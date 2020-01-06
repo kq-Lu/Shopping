@@ -4,9 +4,6 @@
   <resultMap id="BaseResultMap" type="com.briup.shopping.bean.Shoppingcar">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" />
-    <result column="orderTime" jdbcType="TIMESTAMP" property="ordertime" />
-    <result column="orderCount" jdbcType="SMALLINT" property="ordercount" />
-    <result column="salePrice" jdbcType="REAL" property="saleprice" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, customer_id, orderTime, orderCount, salePrice
+    id, customer_id
   </sql>
   <select id="selectByExample" parameterType="com.briup.shopping.bean.ShoppingcarExample" resultMap="BaseResultMap">
     select
@@ -100,10 +97,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.briup.shopping.bean.Shoppingcar">
-    insert into a_shoppingcar (id, customer_id, orderTime, 
-      orderCount, salePrice)
-    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{ordertime,jdbcType=TIMESTAMP}, 
-      #{ordercount,jdbcType=SMALLINT}, #{saleprice,jdbcType=REAL})
+    insert into a_shoppingcar (id, customer_id)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.shopping.bean.Shoppingcar">
     insert into a_shoppingcar
@@ -114,15 +109,6 @@
       <if test="customerId != null">
         customer_id,
       </if>
-      <if test="ordertime != null">
-        orderTime,
-      </if>
-      <if test="ordercount != null">
-        orderCount,
-      </if>
-      <if test="saleprice != null">
-        salePrice,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -130,15 +116,6 @@
       </if>
       <if test="customerId != null">
         #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="ordertime != null">
-        #{ordertime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ordercount != null">
-        #{ordercount,jdbcType=SMALLINT},
-      </if>
-      <if test="saleprice != null">
-        #{saleprice,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -157,15 +134,6 @@
       <if test="record.customerId != null">
         customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
-      <if test="record.ordertime != null">
-        orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.ordercount != null">
-        orderCount = #{record.ordercount,jdbcType=SMALLINT},
-      </if>
-      <if test="record.saleprice != null">
-        salePrice = #{record.saleprice,jdbcType=REAL},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -174,10 +142,7 @@
   <update id="updateByExample" parameterType="map">
     update a_shoppingcar
     set id = #{record.id,jdbcType=INTEGER},
-      customer_id = #{record.customerId,jdbcType=INTEGER},
-      orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
-      orderCount = #{record.ordercount,jdbcType=SMALLINT},
-      salePrice = #{record.saleprice,jdbcType=REAL}
+      customer_id = #{record.customerId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,24 +153,12 @@
       <if test="customerId != null">
         customer_id = #{customerId,jdbcType=INTEGER},
       </if>
-      <if test="ordertime != null">
-        orderTime = #{ordertime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ordercount != null">
-        orderCount = #{ordercount,jdbcType=SMALLINT},
-      </if>
-      <if test="saleprice != null">
-        salePrice = #{saleprice,jdbcType=REAL},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.briup.shopping.bean.Shoppingcar">
     update a_shoppingcar
-    set customer_id = #{customerId,jdbcType=INTEGER},
-      orderTime = #{ordertime,jdbcType=TIMESTAMP},
-      orderCount = #{ordercount,jdbcType=SMALLINT},
-      salePrice = #{saleprice,jdbcType=REAL}
+    set customer_id = #{customerId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

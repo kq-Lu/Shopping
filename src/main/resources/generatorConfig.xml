@@ -48,8 +48,8 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-        <table tableName="a_go" domainObjectName="GO"></table>
 
+		<table tableName="a_shoppingcar" domainObjectName="Shoppingcar"></table>
 		<!-- 映射配置
 		<table tableName="a_category" domainObjectName="Category"></table>
 		<table tableName="a_collect" domainObjectName="Collect"></table>
