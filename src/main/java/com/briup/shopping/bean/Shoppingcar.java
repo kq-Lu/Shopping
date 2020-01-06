@@ -8,8 +8,6 @@ public class Shoppingcar implements Serializable {
 
     private Integer customerId;
 
-    private Integer goodsId;
-
     private Date ordertime;
 
     private Short ordercount;
@@ -32,14 +30,6 @@ public class Shoppingcar implements Serializable {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
-    }
-
-    public Integer getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
     }
 
     public Date getOrdertime() {
@@ -74,7 +64,6 @@ public class Shoppingcar implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", customerId=").append(customerId);
-        sb.append(", goodsId=").append(goodsId);
         sb.append(", ordertime=").append(ordertime);
         sb.append(", ordercount=").append(ordercount);
         sb.append(", saleprice=").append(saleprice);

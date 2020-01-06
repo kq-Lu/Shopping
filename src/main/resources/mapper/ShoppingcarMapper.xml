@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.briup.shopping.bean.Shoppingcar">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" />
-    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
     <result column="orderTime" jdbcType="TIMESTAMP" property="ordertime" />
     <result column="orderCount" jdbcType="SMALLINT" property="ordercount" />
     <result column="salePrice" jdbcType="REAL" property="saleprice" />
@@ -68,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, customer_id, goods_id, orderTime, orderCount, salePrice
+    id, customer_id, orderTime, orderCount, salePrice
   </sql>
   <select id="selectByExample" parameterType="com.briup.shopping.bean.ShoppingcarExample" resultMap="BaseResultMap">
     select
@@ -101,12 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.briup.shopping.bean.Shoppingcar">
-    insert into a_shoppingcar (id, customer_id, goods_id, 
-      orderTime, orderCount, salePrice
-      )
-    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
-      #{ordertime,jdbcType=TIMESTAMP}, #{ordercount,jdbcType=SMALLINT}, #{saleprice,jdbcType=REAL}
-      )
+    insert into a_shoppingcar (id, customer_id, orderTime, 
+      orderCount, salePrice)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{ordertime,jdbcType=TIMESTAMP}, 
+      #{ordercount,jdbcType=SMALLINT}, #{saleprice,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.shopping.bean.Shoppingcar">
     insert into a_shoppingcar
@@ -116,9 +113,6 @@
       </if>
       <if test="customerId != null">
         customer_id,
-      </if>
-      <if test="goodsId != null">
-        goods_id,
       </if>
       <if test="ordertime != null">
         orderTime,
@@ -136,9 +130,6 @@
       </if>
       <if test="customerId != null">
         #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="goodsId != null">
-        #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="ordertime != null">
         #{ordertime,jdbcType=TIMESTAMP},
@@ -166,9 +157,6 @@
       <if test="record.customerId != null">
         customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
-      <if test="record.goodsId != null">
-        goods_id = #{record.goodsId,jdbcType=INTEGER},
-      </if>
       <if test="record.ordertime != null">
         orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
       </if>
@@ -187,7 +175,6 @@
     update a_shoppingcar
     set id = #{record.id,jdbcType=INTEGER},
       customer_id = #{record.customerId,jdbcType=INTEGER},
-      goods_id = #{record.goodsId,jdbcType=INTEGER},
       orderTime = #{record.ordertime,jdbcType=TIMESTAMP},
       orderCount = #{record.ordercount,jdbcType=SMALLINT},
       salePrice = #{record.saleprice,jdbcType=REAL}
@@ -200,9 +187,6 @@
     <set>
       <if test="customerId != null">
         customer_id = #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="goodsId != null">
-        goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="ordertime != null">
         orderTime = #{ordertime,jdbcType=TIMESTAMP},
@@ -219,7 +203,6 @@
   <update id="updateByPrimaryKey" parameterType="com.briup.shopping.bean.Shoppingcar">
     update a_shoppingcar
     set customer_id = #{customerId,jdbcType=INTEGER},
-      goods_id = #{goodsId,jdbcType=INTEGER},
       orderTime = #{ordertime,jdbcType=TIMESTAMP},
       orderCount = #{ordercount,jdbcType=SMALLINT},
       salePrice = #{saleprice,jdbcType=REAL}
