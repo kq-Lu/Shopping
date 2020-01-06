@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.CategoryEXMapper">
+    <resultMap id="abc" type="com.briup.shopping.bean.ex.CategoryEXzp">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="description" column="description"></result>
+        <collection property="goodsEXzp1List" ofType="com.briup.shopping.bean.ex.GoodsEXzp1" ></collection>
+    </resultMap>
+    <select id="findAllcategory" resultType="com.briup.shopping.bean.ex.GoodsEXzp1">
+        select c.id,c.name,c.description ,g.*
+        from a_category c,a_goods g
+        where c.id=g.category_id
+
+    </select>
+</mapper>
