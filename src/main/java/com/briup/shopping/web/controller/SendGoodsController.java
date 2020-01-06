@@ -5,7 +5,7 @@ import com.briup.shopping.bean.ex.SendGoodsEX;
 import com.briup.shopping.service.ISendGoodsService;
 import com.briup.shopping.util.Message;
 import com.briup.shopping.util.MessageUtil;
-import com.sun.deploy.net.URLEncoder;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -22,6 +22,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
