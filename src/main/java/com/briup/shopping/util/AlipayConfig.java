@@ -1,5 +1,7 @@
 package com.briup.shopping.util;
 
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -21,10 +23,11 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyxwABzqEptVrdrAecez3Z6/pwemuM+bKw3qmpRHbXe9AyocgejrJf91pawzlB7lvitXjBCdANSWyt8NLp4tiIPqrlBVisTE/cCnkzu+MkuXGFnVG4mRCoLGTgJkQaMwOH+5Qx0Mmjp/7lr3ONg6oJIYQKaHqFsxn84ImQh5QbwSzYG12XJ0QlvoABrCbImN1EaYopfViMKDaKZNxL6JchcrSH/BjXs3yJwObJ+zng39e3efvTj72X+iF0QEk1F62fVd4BCeCQbqqtoy427lwITipLNmfAeguULq77/7uE0rlcxAxkg3XkgYA+uUQ/DLqdM5kPEnBSVmM72tNZJYcYQIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://localhost:9999/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp";
+    public static String notify_url = "http://localhost:9999/jsp/notify_url.jsp";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://localhost:9999/alipay.trade.page.pay-JAVA-UTF-8/return_url.jsp";
+    public static String return_url = "http://localhost:9999/ForPayment/callback";
+
 
     // 签名方式
     public static String sign_type = "RSA2";
@@ -62,6 +65,10 @@ public class AlipayConfig {
             }
         }
     }
-
+    public static AlipayClient getAlipayClient() {
+        // 获得初始化的AlipayClient
+        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        return alipayClient;
+    }
 
 }
