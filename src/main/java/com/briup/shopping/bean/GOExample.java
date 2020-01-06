@@ -343,6 +343,66 @@ public class GOExample {
             addCriterion("amount not between", value1, value2, "amount");
             return (Criteria) this;
         }
+
+        public Criteria andShoppingcarIdIsNull() {
+            addCriterion("shoppingcar_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdIsNotNull() {
+            addCriterion("shoppingcar_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdEqualTo(Integer value) {
+            addCriterion("shoppingcar_id =", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdNotEqualTo(Integer value) {
+            addCriterion("shoppingcar_id <>", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdGreaterThan(Integer value) {
+            addCriterion("shoppingcar_id >", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shoppingcar_id >=", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdLessThan(Integer value) {
+            addCriterion("shoppingcar_id <", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shoppingcar_id <=", value, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdIn(List<Integer> values) {
+            addCriterion("shoppingcar_id in", values, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdNotIn(List<Integer> values) {
+            addCriterion("shoppingcar_id not in", values, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdBetween(Integer value1, Integer value2) {
+            addCriterion("shoppingcar_id between", value1, value2, "shoppingcarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShoppingcarIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shoppingcar_id not between", value1, value2, "shoppingcarId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
