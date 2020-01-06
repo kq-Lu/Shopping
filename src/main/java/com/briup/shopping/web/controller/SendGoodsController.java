@@ -33,8 +33,8 @@ public class SendGoodsController {
     private ISendGoodsService iSendGoodsService;
     @GetMapping("/findSendGoods")
     @ApiOperation(value = "查询待发货订单并下载订单")
-    public void findSendGoodsDownload(String status,HttpServletResponse response) throws Exception {
-        SendGoodsEX sendGoods =iSendGoodsService.findSendGoods(status);
+    public void findSendGoodsDownload(HttpServletResponse response) throws Exception {
+        SendGoodsEX sendGoods =iSendGoodsService.findSendGoods();
 
         XSSFWorkbook workbook=new XSSFWorkbook();
         XSSFSheet sheet=workbook.createSheet();

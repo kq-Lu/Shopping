@@ -5,7 +5,7 @@ import com.briup.shopping.bean.ex.SendGoodsEX;
 import java.util.List;
 
 public interface ISendGoodsService {
-    SendGoodsEX findSendGoods(String status) throws RuntimeException;
+    SendGoodsEX findSendGoods() throws RuntimeException;
 
     void SendOut(int id) throws RuntimeException;
 }
