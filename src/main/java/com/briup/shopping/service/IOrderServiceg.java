@@ -10,5 +10,6 @@ public interface IOrderServiceg {
     void  deleteById(int id) throws  RuntimeException;
     void saveOrupdate(Order order)throws RuntimeException;
     OrderEXg selectById(int id) throws RuntimeException;
+    void totalPrice() throws RuntimeException;
 
 }

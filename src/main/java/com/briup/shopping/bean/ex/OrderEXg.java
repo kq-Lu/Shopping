@@ -18,7 +18,7 @@ public class OrderEXg implements Serializable {
         this.id = id;
     }
 
-    private Integer tprice;
+    private Double tprice;
     private String uname;
     private String address;
     private Integer phone;
@@ -63,13 +63,11 @@ public class OrderEXg implements Serializable {
         this.code = code;
     }
 
-
-
-    public Integer getTprice() {
+    public Double getTprice() {
         return tprice;
     }
 
-    public void setTprice(Integer tprice) {
+    public void setTprice(Double tprice) {
         this.tprice = tprice;
     }
 

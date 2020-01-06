@@ -26,6 +26,7 @@ public class OderControllerg {
     @GetMapping("/findAllOrder")
     @ApiOperation(value = "查询所有订单")
     public Message selectAll(){
+
         List<OrderEXg> list=orderService.findAllOrder();
         return MessageUtil.success(list);
     }

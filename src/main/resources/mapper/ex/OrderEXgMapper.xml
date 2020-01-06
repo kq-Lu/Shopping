@@ -34,7 +34,7 @@
         <collection property="list" column="id" ofType="com.briup.shopping.bean.ex.OrderEXg" select="selectGoods2"></collection>
     </resultMap>
     <select id="selectById" resultMap="aaa">
-        select o.id id,o.code code,o.totalprice tprice,o.date dates,c.username uname,c.address address,c.phone phone,s.status statu
+        select o.id id,o.code code,o.date dates,o.totalprice tprice,c.username uname,c.address address,c.phone phone,s.status statu
         from a_order o,a_customer c,a_status s
         where o.customer_id=c.id and o.status_id=s.id and o.id=#{id}
     </select>
@@ -43,5 +43,8 @@
         from a_goods g,a_go gos
         where  g.id=gos.goods_id and gos.order_id=#{id}
     </select>
+    <update id="updateTotalprice" parameterType="com.briup.shopping.bean.Order">
+        update a_order set totalprice=#{tprice} where id=#{id}
+    </update>
 
 </mapper>

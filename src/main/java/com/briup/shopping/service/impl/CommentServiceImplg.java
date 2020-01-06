@@ -19,7 +19,7 @@ public class CommentServiceImplg implements ICommentServiceg {
     @Override
     public List<CommentEXg> findAll() throws RuntimeException {
         List<CommentEXg> list=commentEXgMapper.findAll();
-        System.out.println("dd");
+
         return list;
     }
 

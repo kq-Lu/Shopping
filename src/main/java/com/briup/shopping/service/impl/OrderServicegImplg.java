@@ -1,7 +1,12 @@
 package com.briup.shopping.service.impl;
 
+import com.briup.shopping.bean.GO;
+import com.briup.shopping.bean.GOExample;
+import com.briup.shopping.bean.Goods;
 import com.briup.shopping.bean.Order;
 import com.briup.shopping.bean.ex.OrderEXg;
+import com.briup.shopping.mapper.GOMapper;
+import com.briup.shopping.mapper.GoodsMapper;
 import com.briup.shopping.mapper.OrderMapper;
 import com.briup.shopping.mapper.ex.OrderEXgMapper;
 import com.briup.shopping.service.IOrderServiceg;
@@ -18,9 +23,15 @@ public class OrderServicegImplg implements IOrderServiceg {
     private OrderEXgMapper orderEXgMapper;
     @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private GOMapper goMapper;
+   @Autowired
+   private GoodsMapper goodsMapper;
     @Override
     public List<OrderEXg> findAllOrder() throws RuntimeException {
+        totalPrice();
         List<OrderEXg> list= orderEXgMapper.findAll();
+
         return list;
     }
 
@@ -52,5 +63,26 @@ public class OrderServicegImplg implements IOrderServiceg {
        return orderEXg;
 
     }
+    @Override
+    public void totalPrice() throws RuntimeException {
 
-}
+        int goodsId ;
+        int mount ;
+        Double tprice;
+        GOExample goExample = new GOExample();
+        List<GO> listgo = goMapper.selectByExample(goExample);
+        System.out.println("000");
+        for (GO go : listgo) {
+            goodsId = go.getGoodsId();
+            mount = go.getAmount();
+            Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+            Double price = goods.getPrice();
+            tprice = price * mount;
+            System.out.println(tprice);
+            System.out.println(go.getOrderId());
+            orderEXgMapper.updateTotalprice( tprice,go.getOrderId());
+        }
+
+    }
+
+    }
