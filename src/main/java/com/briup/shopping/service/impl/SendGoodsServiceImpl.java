@@ -14,12 +14,17 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
     @Autowired
     private SendGoodsEXMapper sendGoodsEXMapper;
     @Override
-    public SendGoodsEX findSendGoods() throws RuntimeException {
-//        if ("待发货".equals(status)){
-//            return sendGoodsEXMapper.findSendGoods(2);
-//        }
-        return sendGoodsEXMapper.findSendGoods(2);
-        //return null;
+    public List<SendGoodsEX> findSendGoods(String status) throws RuntimeException {
+        if ("待发货".equals(status)){
+            return sendGoodsEXMapper.findSendGoods(2);
+        }
+        //return sendGoodsEXMapper.findSendGoods(2);
+        return null;
+    }
+
+    @Override
+    public SendGoodsEX download(int id) throws RuntimeException {
+        return sendGoodsEXMapper.download(id);
     }
 
     @Override

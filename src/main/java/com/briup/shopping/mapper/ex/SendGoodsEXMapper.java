@@ -5,6 +5,9 @@ import com.briup.shopping.bean.ex.SendGoodsEX;
 import java.util.List;
 
 public interface SendGoodsEXMapper {
-    SendGoodsEX findSendGoods(int status);
+    List<SendGoodsEX> findSendGoods(int status);
+
+    SendGoodsEX download(int id);
+
     void SendOut(int id);
 }

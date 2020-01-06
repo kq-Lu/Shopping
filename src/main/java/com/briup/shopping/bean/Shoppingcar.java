@@ -1,15 +1,20 @@
 package com.briup.shopping.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Shoppingcar implements Serializable {
     private Integer id;
 
-    private Integer count;
+    private Integer customerId;
 
-    private Double totalprice;
+    private Integer goodsId;
 
-    private Integer goId;
+    private Date ordertime;
+
+    private Short ordercount;
+
+    private Float saleprice;
 
     private static final long serialVersionUID = 1L;
 
@@ -21,28 +26,44 @@ public class Shoppingcar implements Serializable {
         this.id = id;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public Double getTotalprice() {
-        return totalprice;
+    public Integer getGoodsId() {
+        return goodsId;
     }
 
-    public void setTotalprice(Double totalprice) {
-        this.totalprice = totalprice;
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public Integer getGoId() {
-        return goId;
+    public Date getOrdertime() {
+        return ordertime;
     }
 
-    public void setGoId(Integer goId) {
-        this.goId = goId;
+    public void setOrdertime(Date ordertime) {
+        this.ordertime = ordertime;
+    }
+
+    public Short getOrdercount() {
+        return ordercount;
+    }
+
+    public void setOrdercount(Short ordercount) {
+        this.ordercount = ordercount;
+    }
+
+    public Float getSaleprice() {
+        return saleprice;
+    }
+
+    public void setSaleprice(Float saleprice) {
+        this.saleprice = saleprice;
     }
 
     @Override
@@ -52,9 +73,11 @@ public class Shoppingcar implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", count=").append(count);
-        sb.append(", totalprice=").append(totalprice);
-        sb.append(", goId=").append(goId);
+        sb.append(", customerId=").append(customerId);
+        sb.append(", goodsId=").append(goodsId);
+        sb.append(", ordertime=").append(ordertime);
+        sb.append(", ordercount=").append(ordercount);
+        sb.append(", saleprice=").append(saleprice);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
