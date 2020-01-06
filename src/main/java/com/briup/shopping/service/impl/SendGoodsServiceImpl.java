@@ -14,7 +14,7 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
     @Autowired
     private SendGoodsEXMapper sendGoodsEXMapper;
     @Override
-    public List<SendGoodsEX> findSendGoods(String status) throws RuntimeException {
+    public SendGoodsEX findSendGoods(String status) throws RuntimeException {
         if ("待发货".equals(status)){
             return sendGoodsEXMapper.findSendGoods(2);
         }
