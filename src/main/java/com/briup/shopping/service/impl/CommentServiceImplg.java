@@ -1,8 +1,6 @@
 package com.briup.shopping.service.impl;
 
-import com.briup.shopping.bean.Comment;
 import com.briup.shopping.bean.ex.CommentEXg;
-import com.briup.shopping.mapper.CommentMapper;
 import com.briup.shopping.mapper.ex.CommentEXgMapper;
 import com.briup.shopping.service.ICommentServiceg;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -24,12 +24,14 @@ public class SendGoodsController {
     @Autowired
     private ISendGoodsService iSendGoodsService;
     @GetMapping("/findSendGoods")
-    @ApiOperation(value = "查询待发货订单")
+    @ApiOperation(value = "查询待发货订单并下载订单")
     @ApiImplicitParam(name = "status",value = "状态",paramType = "query",dataType = "String",required = true)
-    public Message findSendGoods(String status){
+    public Message findSendGoodsDownload(String status){
         List<SendGoodsEX> list =iSendGoodsService.findSendGoods(status);
         return MessageUtil.success(list);
     }
+
+
 
     @PostMapping("/SendOut")
     @ApiOperation(value = "发货")

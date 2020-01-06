@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IForReceiveService {
     List<ForReceiveEX> findForReceive(String status) throws RuntimeException;
-
+    void ReceiveGoods(int id) throws RuntimeException;
 }

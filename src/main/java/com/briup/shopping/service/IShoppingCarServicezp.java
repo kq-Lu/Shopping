@@ -1,6 +1,5 @@
 package com.briup.shopping.service;
 
-import com.briup.shopping.bean.Shoppingcar;
 import com.briup.shopping.bean.ex.ShoppingCarEXzp;
 
 import java.util.List;

@@ -9,7 +9,7 @@ public class Shoppingcar implements Serializable {
 
     private Double totalprice;
 
-    private Integer customerId;
+    private Integer goId;
 
     private static final long serialVersionUID = 1L;
 
@@ -37,12 +37,12 @@ public class Shoppingcar implements Serializable {
         this.totalprice = totalprice;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getGoId() {
+        return goId;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setGoId(Integer goId) {
+        this.goId = goId;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Shoppingcar implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", count=").append(count);
         sb.append(", totalprice=").append(totalprice);
-        sb.append(", customerId=").append(customerId);
+        sb.append(", goId=").append(goId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

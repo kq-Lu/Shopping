@@ -1,6 +1,5 @@
 package com.briup.shopping.web.controller;
 
-import com.briup.shopping.bean.Comment;
 import com.briup.shopping.bean.ex.CommentEXg;
 import com.briup.shopping.service.ICommentServiceg;
 import com.briup.shopping.util.Message;

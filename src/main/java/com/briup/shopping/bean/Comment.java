@@ -1,19 +1,16 @@
 package com.briup.shopping.bean;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
-@ApiModel
+
 public class Comment implements Serializable {
     private Integer id;
 
     private String description;
-@ApiModelProperty(hidden = true)
+
     private Date date;
 
-    private Integer orderId;
+    private Integer goId;
 
     private static final long serialVersionUID = 1L;
 
@@ -41,12 +38,12 @@ public class Comment implements Serializable {
         this.date = date;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getGoId() {
+        return goId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setGoId(Integer goId) {
+        this.goId = goId;
     }
 
     @Override
@@ -58,7 +55,7 @@ public class Comment implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", description=").append(description);
         sb.append(", date=").append(date);
-        sb.append(", orderId=").append(orderId);
+        sb.append(", goId=").append(goId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

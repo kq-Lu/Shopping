@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ReceivedEXMapper {
     List<ReceivedEX> findReceived(int status);
+
     void deleteReceived(int id);
     void deleteGO(int id);
     void deleteComment(int id);

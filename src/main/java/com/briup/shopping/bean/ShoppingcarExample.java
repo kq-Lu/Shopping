@@ -284,63 +284,63 @@ public class ShoppingcarExample {
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdIsNull() {
-            addCriterion("customer_id is null");
+        public Criteria andGoIdIsNull() {
+            addCriterion("go_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdIsNotNull() {
-            addCriterion("customer_id is not null");
+        public Criteria andGoIdIsNotNull() {
+            addCriterion("go_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdEqualTo(Integer value) {
-            addCriterion("customer_id =", value, "customerId");
+        public Criteria andGoIdEqualTo(Integer value) {
+            addCriterion("go_id =", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdNotEqualTo(Integer value) {
-            addCriterion("customer_id <>", value, "customerId");
+        public Criteria andGoIdNotEqualTo(Integer value) {
+            addCriterion("go_id <>", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdGreaterThan(Integer value) {
-            addCriterion("customer_id >", value, "customerId");
+        public Criteria andGoIdGreaterThan(Integer value) {
+            addCriterion("go_id >", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("customer_id >=", value, "customerId");
+        public Criteria andGoIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("go_id >=", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdLessThan(Integer value) {
-            addCriterion("customer_id <", value, "customerId");
+        public Criteria andGoIdLessThan(Integer value) {
+            addCriterion("go_id <", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdLessThanOrEqualTo(Integer value) {
-            addCriterion("customer_id <=", value, "customerId");
+        public Criteria andGoIdLessThanOrEqualTo(Integer value) {
+            addCriterion("go_id <=", value, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdIn(List<Integer> values) {
-            addCriterion("customer_id in", values, "customerId");
+        public Criteria andGoIdIn(List<Integer> values) {
+            addCriterion("go_id in", values, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdNotIn(List<Integer> values) {
-            addCriterion("customer_id not in", values, "customerId");
+        public Criteria andGoIdNotIn(List<Integer> values) {
+            addCriterion("go_id not in", values, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdBetween(Integer value1, Integer value2) {
-            addCriterion("customer_id between", value1, value2, "customerId");
+        public Criteria andGoIdBetween(Integer value1, Integer value2) {
+            addCriterion("go_id between", value1, value2, "goId");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("customer_id not between", value1, value2, "customerId");
+        public Criteria andGoIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("go_id not between", value1, value2, "goId");
             return (Criteria) this;
         }
     }

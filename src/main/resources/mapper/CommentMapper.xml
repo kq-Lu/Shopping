@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="date" jdbcType="TIMESTAMP" property="date" />
-    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="go_id" jdbcType="INTEGER" property="goId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, description, date, order_id
+    id, description, date, go_id
   </sql>
   <select id="selectByExample" parameterType="com.briup.shopping.bean.CommentExample" resultMap="BaseResultMap">
     select
@@ -100,14 +100,11 @@
   </delete>
   <insert id="insert" parameterType="com.briup.shopping.bean.Comment">
     insert into a_comment (id, description, date, 
-      order_id)
+      go_id)
     values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
-      #{orderId,jdbcType=INTEGER})
+      #{goId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.shopping.bean.Comment">
-<selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-  select LAST_INSERT_ID()
-</selectKey>
     insert into a_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -119,8 +116,8 @@
       <if test="date != null">
         date,
       </if>
-      <if test="orderId != null">
-        order_id,
+      <if test="goId != null">
+        go_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -133,8 +130,8 @@
       <if test="date != null">
         #{date,jdbcType=TIMESTAMP},
       </if>
-      <if test="orderId != null">
-        #{orderId,jdbcType=INTEGER},
+      <if test="goId != null">
+        #{goId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -156,8 +153,8 @@
       <if test="record.date != null">
         date = #{record.date,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=INTEGER},
+      <if test="record.goId != null">
+        go_id = #{record.goId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -169,7 +166,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       description = #{record.description,jdbcType=VARCHAR},
       date = #{record.date,jdbcType=TIMESTAMP},
-      order_id = #{record.orderId,jdbcType=INTEGER}
+      go_id = #{record.goId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,8 +180,8 @@
       <if test="date != null">
         date = #{date,jdbcType=TIMESTAMP},
       </if>
-      <if test="orderId != null">
-        order_id = #{orderId,jdbcType=INTEGER},
+      <if test="goId != null">
+        go_id = #{goId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -193,7 +190,7 @@
     update a_comment
     set description = #{description,jdbcType=VARCHAR},
       date = #{date,jdbcType=TIMESTAMP},
-      order_id = #{orderId,jdbcType=INTEGER}
+      go_id = #{goId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

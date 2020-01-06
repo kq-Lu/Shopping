@@ -1,8 +1,6 @@
 package com.briup.shopping.service.impl;
 
-import com.briup.shopping.bean.Shoppingcar;
 import com.briup.shopping.bean.ex.ShoppingCarEXzp;
-import com.briup.shopping.mapper.ShoppingcarMapper;
 import com.briup.shopping.mapper.ex.ShoppingCarEXMapperzp;
 import com.briup.shopping.service.IShoppingCarServicezp;
 import org.springframework.beans.factory.annotation.Autowired;

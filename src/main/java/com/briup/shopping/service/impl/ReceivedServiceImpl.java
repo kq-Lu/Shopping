@@ -15,7 +15,9 @@ public class ReceivedServiceImpl implements IReceivedService {
     @Override
     public List<ReceivedEX> findReceived(String status) throws RuntimeException {
         if ("已收货".equals(status)){
-            return receivedEXMapper.findReceived(4);
+            List<ReceivedEX> list= receivedEXMapper.findReceived(4);
+            System.out.println(list);
+            return list;
         }
         return null;
     }
