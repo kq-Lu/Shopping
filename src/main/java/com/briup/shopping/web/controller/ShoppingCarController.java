@@ -1,5 +1,6 @@
 package com.briup.shopping.web.controller;
 
+import com.briup.shopping.bean.Shoppingcar;
 import com.briup.shopping.bean.ex.ShoppingCarEXzp;
 import com.briup.shopping.service.IShoppingCarServicezp;
 import com.briup.shopping.util.Message;

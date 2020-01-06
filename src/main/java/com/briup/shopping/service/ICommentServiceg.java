@@ -1,5 +1,6 @@
 package com.briup.shopping.service;
 
+import com.briup.shopping.bean.Comment;
 import com.briup.shopping.bean.ex.CommentEXg;
 
 import java.util.List;
