@@ -8,7 +8,7 @@
         <collection property="goodsEXzp1List" ofType="com.briup.shopping.bean.ex.GoodsEXzp1" ></collection>
     </resultMap>
     <select id="findAllcategory" resultType="com.briup.shopping.bean.ex.GoodsEXzp1">
-        select c.id,c.name,c.description ,g.*
+        select c.* ,g.*
         from a_category c,a_goods g
         where c.id=g.category_id
 

@@ -42,7 +42,7 @@ public class ShoppingCarController {
         return MessageUtil.success();
     }
     @GetMapping("/findAllShopping")
-    @ApiOperation(value="查询购物车中的所有商品")
+    @ApiOperation(value="查询所有购物车")
     public Message findAllShopping(){
         List<ShoppingCarEXzp>list= iShoppingCarServicezp.findAll();
         return MessageUtil.success(list);
