@@ -72,7 +72,10 @@ public class SendGoodsController {
         row2.createCell(5).setCellValue("派送方式");
         row3.createCell(5).setCellValue(sendGoodsEX.getExpressMethod());
         row2.createCell(6).setCellValue("日期");
-        row3.createCell(6).setCellValue(sendGoodsEX.getDate());
+        Date time =sendGoodsEX.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String timeFormat = sdf.format(time);
+        row3.createCell(6).setCellValue(timeFormat);
 
         response.setHeader("content-Type", "application/vnd.ms-excel");
         response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode(sendGoodsEX.getId()+"订单.xlsx", "utf-8"));

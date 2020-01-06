@@ -13,5 +13,6 @@ public interface ReceivedEXMapper {
     void deleteComment(int id);
 
     void insertDescription(int id, Date date,String desc);
+
     void deleteDescription(int id);
 }

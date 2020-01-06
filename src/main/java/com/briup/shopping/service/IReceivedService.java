@@ -12,5 +12,6 @@ public interface IReceivedService {
     void deleteMoreReceivedGOComment(int[] ids) throws RuntimeException;
 
     void insertDescription(int id, Date date,String desc) throws RuntimeException;
+
     void deleteDescription(int id) throws RuntimeException;
 }

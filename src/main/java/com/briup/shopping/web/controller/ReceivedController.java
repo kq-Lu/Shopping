@@ -55,7 +55,7 @@ public class ReceivedController {
 
     @PostMapping("/insertDescription")
     @ApiOperation(value = "写评论")
-    @ApiImplicitParams({@ApiImplicitParam(name = "id",value = "订单号",paramType = "query",dataType = "int",required = true),
+    @ApiImplicitParams({@ApiImplicitParam(name = "id",value = "订单项号a_go",paramType = "query",dataType = "int",required = true),
             @ApiImplicitParam(name = "date",value = "时间",paramType = "query",dataType = "Date",required = true),
             @ApiImplicitParam(name = "desc",value = "评论",paramType = "query",dataType = "String",required = true)})
     public Message insertDescription(int id, Date date,String desc){
@@ -66,7 +66,7 @@ public class ReceivedController {
 
     @GetMapping("/deleteDescription")
     @ApiOperation(value = "删除不好的评论")
-    @ApiImplicitParam(name = "id",value = "订单id",paramType = "query",dataType = "int",required = true)
+    @ApiImplicitParam(name = "id",value = "评论id",paramType = "query",dataType = "int",required = true)
     public Message deleteDescription(int id){
         iReceivedService.deleteDescription(id);
         return MessageUtil.success("删除成功");

@@ -29,10 +29,10 @@
 
 
     <insert id="insertDescription" parameterType="com.briup.shopping.bean.Comment">
-        insert into a_comment(description,date,order_id) values (#{desc},#{date},#{id})
+        insert into a_comment(description,date,go_id) values (#{desc},#{date},#{id})
     </insert>
     <delete id="deleteDescription" parameterType="com.briup.shopping.bean.Comment">
-        delete  from a_comment where order_id=#{id}
+        delete  from a_comment where id=#{id}
     </delete>
 
 </mapper>
