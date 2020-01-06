@@ -48,7 +48,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-
+		<table tableName="a_go" domainObjectName="GO"></table>
 		<!-- 映射配置
 		<table tableName="a_category" domainObjectName="Category"></table>
 		<table tableName="a_collect" domainObjectName="Collect"></table>
@@ -58,10 +58,12 @@
 		<table tableName="a_order" domainObjectName="Order"></table>
 		<table tableName="a_payment" domainObjectName="Payment"></table>
 		<table tableName="a_status" domainObjectName="Status"></table>
-		<table tableName="a_go" domainObjectName="GO"></table>
 		<table tableName="a_gs" domainObjectName="GS"></table>
--->
 		<table tableName="a_comment" domainObjectName="Comment"></table>
-		<table tableName="a_shoppingcar" domainObjectName="Shoppingcar"></table>
+		<table tableName="a_shoppingcar" domainObjectName="Shoppingcar"></table>-->
 	</context>
 </generatorConfiguration>
+
+
+
+
