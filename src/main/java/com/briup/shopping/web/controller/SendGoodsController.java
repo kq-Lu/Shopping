@@ -1,4 +1,4 @@
-package com.briup.shopping.web.controller;
+、package com.briup.shopping.web.controller;
 
 
 import com.briup.shopping.bean.ex.SendGoodsEX;
