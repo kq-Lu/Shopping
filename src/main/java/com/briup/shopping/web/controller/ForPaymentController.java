@@ -98,17 +98,20 @@ public class ForPaymentController {
             // 订单名字
 
             String subject  = new String();
+            String description = new String();
             GOExample example = new GOExample();
             example.createCriteria().andOrderIdEqualTo(id);
             List<GO> gos = goMapper.selectByExample(example);
             for(GO go:gos){
                 Goods goods = goodsMapper.selectByPrimaryKey(go.getGoodsId());
                 subject = goods.getName();
+                description = goods.getDescription();
             }
 
             model.setSubject(subject);
             // 订单描述
-            model.setBody(System.currentTimeMillis()+"");
+//            model.setBody(System.currentTimeMillis()+"");
+            model.setBody(description);
 
             // 产品码
             model.setProductCode("FAST_INSTANT_TRADE_PAY");
