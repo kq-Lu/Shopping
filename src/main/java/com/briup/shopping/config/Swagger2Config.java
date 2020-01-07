@@ -34,10 +34,10 @@ public class Swagger2Config {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("智慧校园")
-				.description("昆山杰普软件科技有限公司，http://www.briup.com")
-				.termsOfServiceUrl("http://www.briup.com")
-				.version("1.1")
+				.title("爱Shopping")
+				.description("无脑五人组软件科技有限公司，http://localhost:9999/swagger-ui.html")
+				.termsOfServiceUrl("http://localhost:9999/swagger-ui.html")
+				.version("0.1")
 				.build();
 	}
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.LoginEXMapper">
+    <select id="login" resultType="com.briup.shopping.bean.ex.CustomerEX">
+        select * from a_customer where username=#{username} and password=#{password}
+    </select>
+    <insert id="insert" parameterType="com.briup.shopping.bean.Customer">
+        insert into a_customer(username,password,phone,address) values(#{username},#{password},#{phone},#{address})
+    </insert>
+</mapper>
