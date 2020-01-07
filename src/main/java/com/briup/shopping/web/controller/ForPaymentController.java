@@ -91,7 +91,7 @@ public class ForPaymentController {
                     new AlipayTradePayModel();
 
             // 设定订单号 必须要写,且订单号不能重复，目前已经只是做测试，已经写死
-            model.setOutTradeNo(order.getId()+"");
+            model.setOutTradeNo(order.getCode()+"");
 
             // 设置订单金额
             model.setTotalAmount(order.getTprice()+"");
