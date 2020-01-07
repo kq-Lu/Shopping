@@ -1,13 +1,11 @@
 package com.briup.shopping.service.impl;
 
-import com.briup.shopping.bean.GO;
-import com.briup.shopping.bean.GOExample;
-import com.briup.shopping.bean.Goods;
-import com.briup.shopping.bean.Order;
+import com.briup.shopping.bean.*;
 import com.briup.shopping.bean.ex.OrderEXg;
 import com.briup.shopping.mapper.GOMapper;
 import com.briup.shopping.mapper.GoodsMapper;
 import com.briup.shopping.mapper.OrderMapper;
+import com.briup.shopping.mapper.ex.GoodsEXgMapper;
 import com.briup.shopping.mapper.ex.OrderEXgMapper;
 import com.briup.shopping.service.IOrderServiceg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,8 @@ public class OrderServicegImplg implements IOrderServiceg {
     private GOMapper goMapper;
     @Autowired
     private GoodsMapper goodsMapper;
+    @Autowired
+    private GoodsEXgMapper goodsEXgMapper;
 
     @Override
     public List<OrderEXg> findAllOrder() throws RuntimeException {
@@ -57,15 +57,13 @@ public class OrderServicegImplg implements IOrderServiceg {
         Double tprice;
         GOExample goExample = new GOExample();
         List<GO> listgo = goMapper.selectByExample(goExample);
-        System.out.println("000");
+
         for (GO go : listgo) {
             goodsId = go.getGoodsId();
             mount = go.getAmount();
             Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
             Double price = goods.getPrice();
             tprice = price * mount;
-            System.out.println(tprice);
-            System.out.println(go.getOrderId());
             orderEXgMapper.updateTotalprice(tprice, go.getOrderId());
         }
 
@@ -85,6 +83,7 @@ public class OrderServicegImplg implements IOrderServiceg {
             go.setGoodsId(ids[i]);
             go.setOrderId(order.getId());
             goMapper.insert(go);
+            updateStore();
 
         }
 
@@ -100,6 +99,29 @@ public class OrderServicegImplg implements IOrderServiceg {
             Random random = new Random();
             order.setCode(random.nextInt(9000) + 10000);
             orderMapper.updateByPrimaryKey(order);
+        }
+    }
+
+    @Override
+    public void updateStore() throws RuntimeException {
+        int samout;
+        int Tstore;
+        int Astore;
+        int goodsId;
+        GOExample goExample = new GOExample();
+        List<GO> listgo = goMapper.selectByExample(goExample);
+
+        for (GO go : listgo) {
+
+            samout = go.getAmount();
+
+            GoodsExample goodsExample = new GoodsExample();
+                  Goods goods1= goodsMapper.selectByPrimaryKey(go.getGoodsId());
+            Tstore = goods1.getStorage();
+
+            Astore = Tstore - samout;
+            goodsId = go.getGoodsId();
+            goodsEXgMapper.updateStore(Astore, goodsId);
         }
     }
 }

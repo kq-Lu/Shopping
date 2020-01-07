@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.shopping.mapper.ex.GoodsEXgMapper">
+    <update id="updateStore" parameterType="com.briup.shopping.bean.Goods">
+        update a_goods set storage=#{storage} where id=#{id}
+    </update>
+</mapper>

@@ -13,5 +13,6 @@ public interface IOrderServiceg {
     void totalPrice() throws RuntimeException;
     void creatOrder(Order order,int[] ids) throws RuntimeException;
     void updateOrder(Order order) throws RuntimeException;
+    void updateStore()throws  RuntimeException;
 
 }
