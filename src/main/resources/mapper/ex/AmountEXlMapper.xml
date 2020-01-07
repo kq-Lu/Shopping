@@ -5,19 +5,25 @@
         <collection property="orders" ofType="com.briup.shopping.bean.Order" select="selectorders" column="id"></collection>
         <collection property="goods" ofType="com.briup.shopping.bean.Goods" column="id" select="selectgoods"></collection>
 
+        <collection property="goodsList" ofType="com.briup.shopping.bean.ex.ResultEXl" column="id" select="number"></collection>
     </resultMap>
-    <resultMap id="aaa" type="com.briup.shopping.bean.ex.ResultEXl">
-        <result column="code" property="code"></result>
+    <!--<resultMap id="aaa" type="com.briup.shopping.bean.ex.ResultEXl">
+        <result column="gname" property="gname"></result>
 
-    </resultMap>
+      <collection property="goodsList" ofType="com.briup.shopping.bean.Goods" column="id" select="count"></collection>
+    </resultMap>-->
     <select id="findAll" resultMap="abn">
         select s.status statusorders,s.id id from a_status s
     </select>
     <select id="selectorders" resultType="int">
-        select count(g.order_id) from a_order o,a_go g where group by g.order_id having count (g.order_id)>1
-        and o.id=g.order_id and o.status_id=#{id}
+        select count(distinct g.order_id) from a_order o,a_go g where o.id=g.order_id and o.status_id=#{id}
     </select>
-   <select id="selectgoods" resultType="int">
-       select count(*) from a_goods g,a_order o,a_go m where o.status_id=#{id} and m.order_id=o.id and g.id=m.goods_id
+   <select id="selectgoods" resultType="com.briup.shopping.bean.ex.ResultEXl">
+       select distinct g.name gname,s.id id from a_goods g,a_order o,a_go m,a_status s where o.status_id=#{id} and m.order_id=o.id and g.id=m.goods_id
+        and s.id=o.status_id
    </select>
+    <select id="number" resultType="int">
+        select count(*) from a_go g,a_order o where o.status_id=#{id} and o.id=g.order_id group by g.goods_id
+    </select>
+
 </mapper>

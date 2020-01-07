@@ -13,6 +13,16 @@ public class AmountEXl implements Serializable {
     List<Order> orders;
     List<Goods> goods;
 
+    List<ResultEXl> goodsList;
+
+    public List<ResultEXl> getGoodsList() {
+        return goodsList;
+    }
+
+    public void setGoodsList(List<ResultEXl> goodsList) {
+        this.goodsList = goodsList;
+    }
+
     public List<Goods> getGoods() {
         return goods;
     }

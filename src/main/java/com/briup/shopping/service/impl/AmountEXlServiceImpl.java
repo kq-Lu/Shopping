@@ -17,4 +17,7 @@ public class AmountEXlServiceImpl implements IAmountEXlService {
         List<AmountEXl> list=amountEXlMapper.findAll();
         return list;
     }
+
+
+
 }

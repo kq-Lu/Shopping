@@ -7,16 +7,15 @@ import java.util.List;
 
 public class ResultEXl implements Serializable {
 
-    private String code;
+    private String gname;
 
 
 
-
-    public String getCode() {
-        return code;
+    public String getGname() {
+        return gname;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setGname(String gname) {
+        this.gname = gname;
     }
 }
