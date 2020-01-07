@@ -11,7 +11,7 @@
     <select id="findAll" resultMap="aaa">
         select c.id id,c.description description,g.name gname,c.date dates,u.username cname
         from a_comment c,a_order o,a_goods g,a_go gos,a_customer u
-        where c.go_id=o.id and g.id=gos.goods_id and o.id=gos.order_id and u.id=o.customer_id
+        where c.go_id=gos.id and g.id=gos.goods_id and o.id=gos.order_id and u.id=o.customer_id
     </select>
 
 </mapper>

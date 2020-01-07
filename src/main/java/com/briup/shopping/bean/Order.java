@@ -12,7 +12,7 @@ public class Order implements Serializable {
     private Integer id;
 @ApiModelProperty(hidden = true)
     private Integer code;
-
+@ApiModelProperty(hidden = true)
     private Double totalprice;
     @ApiModelProperty(hidden = true)
     private Date date;

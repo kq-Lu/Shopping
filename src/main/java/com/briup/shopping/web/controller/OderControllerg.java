@@ -1,6 +1,8 @@
 package com.briup.shopping.web.controller;
 
+import com.briup.shopping.bean.GO;
 import com.briup.shopping.bean.Order;
+import com.briup.shopping.bean.OrderExample;
 import com.briup.shopping.bean.ex.OrderEXg;
 import com.briup.shopping.service.IOrderServiceg;
 import com.briup.shopping.util.Message;
@@ -10,10 +12,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,23 +47,27 @@ public class OderControllerg {
     }
     @PostMapping("/saveOrder")
     @ApiOperation(value = "添加订单")
-    @ApiImplicitParams({ @ApiImplicitParam(name = "totalprice",value="总价",paramType = "query",dataType = "int"),
+    @ApiImplicitParams({
             @ApiImplicitParam(name = "customerId",value="顾客Id",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "paymentId",value="支付的Id，选择支付方式",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "expressId",value="配送Id，选择配送方式",paramType = "query",dataType = "int"),
-            @ApiImplicitParam(name = "statusId",value="状态Id",paramType = "query",dataType = "int")
+            @ApiImplicitParam(name = "statusId",value="状态Id",paramType = "query",dataType = "int"),
+            @ApiImplicitParam(name="ids",value = "订单项id",paramType = "query",dataType = "int")
     }
 
-            )
-    public Message saveOrder(Order order){
-        orderService.saveOrupdate(order);
-        return MessageUtil.success();
+    )
+    public Message creatOrder(Order order,int[] ids){
+        orderService.creatOrder(order,ids);
+        return MessageUtil.success(order);
     }
+
+
+
     @PostMapping("/updateOrder")
     @ApiOperation(value = "更新订单")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id",value="根据Id修改信息",paramType = "query",dataType = "int",required = true),
-            @ApiImplicitParam(name = "totalprice",value="总价",paramType = "query",dataType = "int"),
+
             @ApiImplicitParam(name = "customerId",value="顾客Id",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "paymentId",value="支付的Id，选择支付方式",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "expressId",value="配送Id，选择配送方式",paramType = "query",dataType = "int"),
@@ -73,7 +76,7 @@ public class OderControllerg {
 
     )
     public Message updateOrder(Order order){
-        orderService.saveOrupdate(order);
+        orderService.updateOrder(order);
         return MessageUtil.success();
     }
     @GetMapping("/selectById")
@@ -84,6 +87,9 @@ public class OderControllerg {
         OrderEXg order=orderService.selectById(id);
         return MessageUtil.success(order);
     }
+
+
+
 
 
 

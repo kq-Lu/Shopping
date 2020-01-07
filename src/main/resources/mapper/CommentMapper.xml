@@ -105,6 +105,9 @@
       #{goId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.shopping.bean.Comment">
+<selectKey keyProperty="id" keyColumn="id" order="AFTER" resultType="int">
+  select LAST_INSERT_ID()
+</selectKey>
     insert into a_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -136,6 +139,7 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.briup.shopping.bean.CommentExample" resultType="java.lang.Long">
+
     select count(*) from a_comment
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
