@@ -5,6 +5,7 @@ import com.briup.shopping.bean.ex.OrderEXg;
 import com.briup.shopping.mapper.GOMapper;
 import com.briup.shopping.mapper.GoodsMapper;
 import com.briup.shopping.mapper.OrderMapper;
+import com.briup.shopping.mapper.ex.GoEXgMapper;
 import com.briup.shopping.mapper.ex.GoodsEXgMapper;
 import com.briup.shopping.mapper.ex.OrderEXgMapper;
 import com.briup.shopping.service.IOrderServiceg;
@@ -27,6 +28,8 @@ public class OrderServicegImplg implements IOrderServiceg {
     private GoodsMapper goodsMapper;
     @Autowired
     private GoodsEXgMapper goodsEXgMapper;
+    @Autowired
+    private GoEXgMapper goEXgMapper;
 
     @Override
     public List<OrderEXg> findAllOrder() throws RuntimeException {
@@ -70,8 +73,8 @@ public class OrderServicegImplg implements IOrderServiceg {
     }
 
     @Override
-    public void creatOrder(Order order, int[] ids) throws RuntimeException {
-
+    public void creatOrder(Order order, int[] ids,int[] amounts) throws RuntimeException {
+        order.setStatusId(3);
         order.setDate(new Date());
         Random random = new Random();
         order.setCode(random.nextInt(9000) + 10000);
@@ -79,11 +82,22 @@ public class OrderServicegImplg implements IOrderServiceg {
 
         for (int i = 0; i < ids.length; i++) {
             GO go = new GO();
-            go.setAmount(2);
+
             go.setGoodsId(ids[i]);
             go.setOrderId(order.getId());
             goMapper.insert(go);
 
+        }
+        for(int i=0;i<ids.length;i++) {
+            int orderID = order.getId();
+            GOExample goExample = new GOExample();
+            goExample.createCriteria().andOrderIdEqualTo(orderID)
+                    .andGoodsIdEqualTo(ids[i]);
+            List<GO> list=goMapper.selectByExample(goExample);
+            for(GO go:list) {
+                goEXgMapper.updateAmount(amounts[i],go.getId());
+
+            }
         }
 
     }

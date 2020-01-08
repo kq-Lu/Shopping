@@ -22,7 +22,7 @@ public class Order implements Serializable {
     private Integer paymentId;
 
     private Integer expressId;
-
+@ApiModelProperty(hidden = true)
     private Integer statusId;
 
     private static final long serialVersionUID = 1L;

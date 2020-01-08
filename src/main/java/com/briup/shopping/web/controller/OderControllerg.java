@@ -51,13 +51,13 @@ public class OderControllerg {
             @ApiImplicitParam(name = "customerId",value="顾客Id",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "paymentId",value="支付的Id，选择支付方式",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "expressId",value="配送Id，选择配送方式",paramType = "query",dataType = "int"),
-            @ApiImplicitParam(name = "statusId",value="状态Id",paramType = "query",dataType = "int"),
-            @ApiImplicitParam(name="ids",value = "订单项id",paramType = "query",dataType = "int")
+            @ApiImplicitParam(name="ids",value = "订单项id",paramType = "query",dataType = "int"),
+            @ApiImplicitParam(name = "amounts",value = "数量",paramType = "query",dataType = "int")
     }
 
     )
-    public Message creatOrder(Order order,int[] ids){
-        orderService.creatOrder(order,ids);
+    public Message creatOrder(Order order,int[] ids,int[] amounts){
+        orderService.creatOrder(order,ids,amounts);
         return MessageUtil.success(order);
     }
 
@@ -71,7 +71,7 @@ public class OderControllerg {
             @ApiImplicitParam(name = "customerId",value="顾客Id",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "paymentId",value="支付的Id，选择支付方式",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "expressId",value="配送Id，选择配送方式",paramType = "query",dataType = "int"),
-            @ApiImplicitParam(name = "statusId",value="状态Id",paramType = "query",dataType = "int")
+
     }
 
     )
