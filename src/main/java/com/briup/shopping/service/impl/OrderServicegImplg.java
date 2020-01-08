@@ -102,17 +102,14 @@ public class OrderServicegImplg implements IOrderServiceg {
     }
 
     @Override
-    public void updateStore() throws RuntimeException {
+    public void updateStore(int id) throws RuntimeException {
         int samout;
         int Tstore;
         int Astore;
         int goodsId;
-        OrderExample orderExample = new OrderExample();
-        List<Order> orderList=orderMapper.selectByExample(orderExample);
-        for(Order order:orderList){
-            if(order.getStatusId()==1){
+
                 GOExample goExample = new GOExample();
-                goExample.createCriteria().andOrderIdEqualTo(order.getId());
+                goExample.createCriteria().andOrderIdEqualTo(id);
                 List<GO> listgo = goMapper.selectByExample(goExample);
                 for (GO go : listgo) {
 
@@ -130,8 +127,8 @@ public class OrderServicegImplg implements IOrderServiceg {
                 }
 
             }
-        }
 
 
-    }
+
+
 }
