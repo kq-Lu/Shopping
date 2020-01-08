@@ -68,7 +68,7 @@ public class CustomerlController {
     public Message count(String key){
        List<Customer> list=customerlService.findByAddress(key);
 
-        return MessageUtil.success(key+"省的顾客人数为："+list.size());
+        return MessageUtil.success(key+"的顾客人数为："+list.size());
     }
 }
 

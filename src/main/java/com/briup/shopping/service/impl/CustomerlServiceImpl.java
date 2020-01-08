@@ -90,7 +90,12 @@ public class CustomerlServiceImpl implements ICustomerlService {
         ||"浙江".equals(key)||"安徽".equals(key)||"福建".equals(key)||"山东".equals(key)||"江西".equals(key)||"湖北".equals(key)||"河南".equals(key)||
         "湖南".equals(key)||"海南".equals(key)||"广东".equals(key)||"四川".equals(key)||"云南".equals(key)||"贵州".equals(key)||"青海".equals(key)
         ||"甘肃".equals(key)||"台湾".equals(key)||"广西".equals(key)||"内蒙古".equals(key)||"新疆".equals(key)||"宁夏".equals(key)||"西藏".equals(key)
-        ||"北京".equals(key)||"上海".equals(key)||"重庆".equals(key)||"天津".equals(key)||"香港".equals(key)||"澳门".equals(key)){
+        ||"北京".equals(key)||"上海".equals(key)||"重庆".equals(key)||"天津".equals(key)||"香港".equals(key)||"澳门".equals(key)
+        ||"陕西省".equals(key)||"山西省".equals(key)||"河北省".equals(key)||"辽宁省".equals(key)||"吉林省".equals(key)||"黑龙江省".equals(key)||"江苏省".equals(key)
+                ||"浙江省".equals(key)||"安徽省".equals(key)||"福建省".equals(key)||"山东省".equals(key)||"江西省".equals(key)||"湖北省".equals(key)||"河南省".equals(key)||
+                "湖南省".equals(key)||"海南省".equals(key)||"广东省".equals(key)||"四川省".equals(key)||"云南省".equals(key)||"贵州省".equals(key)||"青海省".equals(key)
+                ||"甘肃省".equals(key)||"台湾省".equals(key)||"广西壮族自治区".equals(key)||"内蒙古自治区".equals(key)||"新疆维吾尔族自治区".equals(key)||"宁夏回族自治区".equals(key)||"西藏自治区".equals(key)
+                ||"北京市".equals(key)||"上海市".equals(key)||"重庆市".equals(key)||"天津市".equals(key)||"香港特别行政区".equals(key)||"澳门特别行政区".equals(key)){
 
             key= key+"%";
 
