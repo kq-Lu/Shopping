@@ -2,6 +2,7 @@ package com.briup.shopping.service.impl;
 
 import com.briup.shopping.bean.ex.SendGoodsEX;
 import com.briup.shopping.mapper.ex.SendGoodsEXMapper;
+import com.briup.shopping.service.IOrderServiceg;
 import com.briup.shopping.service.ISendGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
 
     @Autowired
     private SendGoodsEXMapper sendGoodsEXMapper;
+
+    @Autowired
+    private IOrderServiceg orderServiceg;
     @Override
     public List<SendGoodsEX> findSendGoods(String status) throws RuntimeException {
         if ("待发货".equals(status)){
@@ -29,8 +33,7 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
 
     @Override
     public void SendOut(int id) throws RuntimeException {
-        OrderServicegImplg orderServicegImplg = new OrderServicegImplg();
-        orderServicegImplg.updateStore(id);
+        orderServiceg.updateStore(id);
         sendGoodsEXMapper.SendOut(id);
     }
 }

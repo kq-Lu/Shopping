@@ -103,31 +103,37 @@ public class OrderServicegImplg implements IOrderServiceg {
 
     @Override
     public void updateStore(int id) throws RuntimeException {
-        int samout;
-        int Tstore;
-        int Astore;
-        int goodsId;
+//        int samout;
+//        int Tstore;
+//        int Astore;
+//        int goodsId;
 
-                GOExample goExample = new GOExample();
-                goExample.createCriteria().andOrderIdEqualTo(id);
-                System.out.println(id);
-                List<GO> listgo = goMapper.selectByExample(goExample);
-                for (GO go : listgo) {
+        GOExample goExample = new GOExample();
+        goExample.createCriteria().andOrderIdEqualTo(id);
+        List<GO> gos = goMapper.selectByExample(goExample);
+        for(GO go : gos){
+            Goods goods = goodsMapper.selectByPrimaryKey(go.getGoodsId());
+            goodsEXgMapper.updateStore(goods.getStorage() - go.getAmount(),go.getGoodsId());
+        }
+//        List<GO> listgo = goMapper.selectByExample(goExample);
+//        for (GO go : listgo) {
+//            System.out.println(go.getAmount());
+//            samout = go.getAmount();
+//
+//            Goods goods1= goodsMapper.selectByPrimaryKey(go.getGoodsId());
+//            // Goods goods1=goExample.createCriteria().andGoodsIdEqualTo(go.getId());
+//
+//
+//            Tstore = goods1.getStorage();
+//
+//            Astore = Tstore - samout;
+//            goodsId = go.getGoodsId();
+//            goodsEXgMapper.updateStore(Astore, goodsId);
+//        }
 
-                    samout = go.getAmount();
-
-                    Goods goods1= goodsMapper.selectByPrimaryKey(go.getGoodsId());
-                    // Goods goods1=goExample.createCriteria().andGoodsIdEqualTo(go.getId());
 
 
-                    Tstore = goods1.getStorage();
-
-                    Astore = Tstore - samout;
-                    goodsId = go.getGoodsId();
-                    goodsEXgMapper.updateStore(Astore, goodsId);
-                }
-
-            }
+    }
 
 
 
