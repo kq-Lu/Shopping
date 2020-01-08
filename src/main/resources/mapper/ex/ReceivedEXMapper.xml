@@ -28,9 +28,9 @@
     </delete>
 
 
-    <insert id="insertDescription" parameterType="com.briup.shopping.bean.Comment">
-        insert into a_comment(description,date,go_id) values (#{desc},#{date},#{id})
-    </insert>
+<!--    <insert id="insertDescription" parameterType="com.briup.shopping.bean.Comment">-->
+<!--        insert into a_comment(description,go_id) values (#{desc},#{id})-->
+<!--    </insert>-->
     <delete id="deleteDescription" parameterType="com.briup.shopping.bean.Comment">
         delete  from a_comment where id=#{id}
     </delete>

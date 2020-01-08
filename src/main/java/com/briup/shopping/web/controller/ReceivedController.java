@@ -1,5 +1,6 @@
 package com.briup.shopping.web.controller;
 
+import com.briup.shopping.bean.Comment;
 import com.briup.shopping.bean.ex.ReceivedEX;
 import com.briup.shopping.service.IReceivedService;
 import com.briup.shopping.util.Message;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -55,11 +59,8 @@ public class ReceivedController {
 
     @PostMapping("/insertDescription")
     @ApiOperation(value = "写评论")
-    @ApiImplicitParams({@ApiImplicitParam(name = "id",value = "订单项号a_go",paramType = "query",dataType = "int",required = true),
-            @ApiImplicitParam(name = "date",value = "时间",paramType = "query",dataType = "Date",required = true),
-            @ApiImplicitParam(name = "desc",value = "评论",paramType = "query",dataType = "String",required = true)})
-    public Message insertDescription(int id, Date date,String desc){
-        iReceivedService.insertDescription(id,date,desc);
+    public Message insertDescription(Comment comment){
+        iReceivedService.insertDescription(comment);
         return MessageUtil.success("评论成功");
     }
 
@@ -73,12 +74,10 @@ public class ReceivedController {
     }
 
 
-
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder, WebRequest request) {
-        //转换日期 注意这里的转化要和传进来的字符串的格式一直 如2015-9-9 就应该为yyyy-MM-dd
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
-    }
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder, WebRequest request) {
+//        //转换日期 注意这里的转化要和传进来的字符串的格式一直 如2015-9-9 就应该为yyyy-MM-dd
+//        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
+//    }
 }

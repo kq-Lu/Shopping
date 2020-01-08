@@ -1,17 +1,23 @@
 package com.briup.shopping.service.impl;
 
+import com.briup.shopping.bean.Comment;
+import com.briup.shopping.bean.CommentExample;
 import com.briup.shopping.bean.ex.ReceivedEX;
+import com.briup.shopping.mapper.CommentMapper;
 import com.briup.shopping.mapper.ex.ReceivedEXMapper;
 import com.briup.shopping.service.IReceivedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Service
 public class ReceivedServiceImpl implements IReceivedService {
     @Autowired
     private ReceivedEXMapper receivedEXMapper;
+    @Autowired
+    private CommentMapper commentMapper;
     @Override
     public List<ReceivedEX> findReceived(String status) throws RuntimeException {
         if ("已收货".equals(status)){
@@ -40,8 +46,9 @@ public class ReceivedServiceImpl implements IReceivedService {
 
 
     @Override
-    public void insertDescription(int id, Date date, String desc) throws RuntimeException {
-        receivedEXMapper.insertDescription(id,date ,desc);
+    public void insertDescription(Comment comment) throws RuntimeException {
+        comment.setDate(new Date());
+        commentMapper.insert(comment);
     }
 
     @Override

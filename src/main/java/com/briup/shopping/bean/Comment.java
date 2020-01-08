@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 @ApiModel
-public class Comment implements Serializable {
+public class  Comment implements Serializable {
     private Integer id;
 
     private String description;

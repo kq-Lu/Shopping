@@ -10,6 +10,8 @@ public class ReceivedEX implements Serializable {
     private String address;
     private int phone;
 
+
+
     public int getId() {
         return id;
     }
