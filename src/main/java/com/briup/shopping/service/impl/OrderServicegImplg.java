@@ -110,6 +110,7 @@ public class OrderServicegImplg implements IOrderServiceg {
 
                 GOExample goExample = new GOExample();
                 goExample.createCriteria().andOrderIdEqualTo(id);
+                System.out.println(id);
                 List<GO> listgo = goMapper.selectByExample(goExample);
                 for (GO go : listgo) {
 

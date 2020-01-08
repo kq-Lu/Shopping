@@ -29,6 +29,8 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
 
     @Override
     public void SendOut(int id) throws RuntimeException {
+        OrderServicegImplg orderServicegImplg = new OrderServicegImplg();
+        orderServicegImplg.updateStore(id);
         sendGoodsEXMapper.SendOut(id);
     }
 }
