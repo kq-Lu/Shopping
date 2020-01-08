@@ -83,7 +83,6 @@ public class OrderServicegImplg implements IOrderServiceg {
             go.setGoodsId(ids[i]);
             go.setOrderId(order.getId());
             goMapper.insert(go);
-            updateStore();
 
         }
 
@@ -108,20 +107,31 @@ public class OrderServicegImplg implements IOrderServiceg {
         int Tstore;
         int Astore;
         int goodsId;
-        GOExample goExample = new GOExample();
-        List<GO> listgo = goMapper.selectByExample(goExample);
+        OrderExample orderExample = new OrderExample();
+        List<Order> orderList=orderMapper.selectByExample(orderExample);
+        for(Order order:orderList){
+            if(order.getStatusId()==1){
+                GOExample goExample = new GOExample();
+                goExample.createCriteria().andOrderIdEqualTo(order.getId());
+                List<GO> listgo = goMapper.selectByExample(goExample);
+                for (GO go : listgo) {
 
-        for (GO go : listgo) {
+                    samout = go.getAmount();
 
-            samout = go.getAmount();
+                    Goods goods1= goodsMapper.selectByPrimaryKey(go.getGoodsId());
+                    // Goods goods1=goExample.createCriteria().andGoodsIdEqualTo(go.getId());
 
-            GoodsExample goodsExample = new GoodsExample();
-                  Goods goods1= goodsMapper.selectByPrimaryKey(go.getGoodsId());
-            Tstore = goods1.getStorage();
 
-            Astore = Tstore - samout;
-            goodsId = go.getGoodsId();
-            goodsEXgMapper.updateStore(Astore, goodsId);
+                    Tstore = goods1.getStorage();
+
+                    Astore = Tstore - samout;
+                    goodsId = go.getGoodsId();
+                    goodsEXgMapper.updateStore(Astore, goodsId);
+                }
+
+            }
         }
+
+
     }
 }
