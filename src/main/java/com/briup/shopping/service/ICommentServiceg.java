@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ICommentServiceg {
     List<CommentEXg> findAll() throws RuntimeException;
-    void saveOrupdate(Comment comment) throws RuntimeException;
+    void saveComment(Comment comment) throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
+    void updateComment(Comment comment) throws RuntimeException;
 }

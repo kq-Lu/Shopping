@@ -8,4 +8,5 @@ public interface OrderEXgMapper {
     List<OrderEXg> findAll();
     OrderEXg selectById(int id);
     void updateTotalprice(double tprice,int id);
+
 }

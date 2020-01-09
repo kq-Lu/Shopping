@@ -68,7 +68,7 @@ public class OderControllerg {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id",value="根据Id修改信息",paramType = "query",dataType = "int",required = true),
 
-            @ApiImplicitParam(name = "customerId",value="顾客Id",paramType = "query",dataType = "int"),
+
             @ApiImplicitParam(name = "paymentId",value="支付的Id，选择支付方式",paramType = "query",dataType = "int"),
             @ApiImplicitParam(name = "expressId",value="配送Id，选择配送方式",paramType = "query",dataType = "int"),
 

@@ -24,7 +24,7 @@ public class CommentServiceImplg implements ICommentServiceg {
     }
 
     @Override
-    public void saveOrupdate(Comment comment) throws RuntimeException {
+    public void saveComment(Comment comment) throws RuntimeException {
         comment.setDate(new Date());
         if(comment==null){
             throw new RuntimeException("参数为空");
@@ -33,13 +33,20 @@ public class CommentServiceImplg implements ICommentServiceg {
 
             commentMapper.insert(comment);
         }
-        else {
-            commentMapper.updateByPrimaryKey(comment);
-        }
+
     }
 
     @Override
     public void deleteById(int id) throws RuntimeException {
         commentMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public void updateComment(Comment comment) throws RuntimeException {
+        comment.setDate(new Date());
+        Comment comment1=commentMapper.selectByPrimaryKey(comment.getId());
+        comment.setGoId(comment1.getGoId());
+        commentMapper.updateByPrimaryKey(comment);
+    }
+
 }

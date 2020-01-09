@@ -36,17 +36,18 @@ public class CommentControllerg {
             @ApiImplicitParam(name = "goId",value="订单项Id",paramType = "query",dataType = "int")
     })
     public Message saveComment(Comment comment){
-        commentServiceg.saveOrupdate(comment);
+        commentServiceg.saveComment(comment);
         return MessageUtil.success();
     }
     @PostMapping("/updateComment")
     @ApiOperation(value = "修改评论")
     @ApiImplicitParams({ @ApiImplicitParam(name = "id",value="根据Id修改评论",paramType = "query",dataType = "int",required = true),
             @ApiImplicitParam(name = "description",value="评论",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "goId",value="订单项Id",paramType = "query",dataType = "int")
+
     })
     public Message updateComment(Comment comment){
-        commentServiceg.saveOrupdate(comment);
+
+        commentServiceg.updateComment(comment);
         return MessageUtil.success();
     }
    @GetMapping("/deleteById")

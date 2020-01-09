@@ -12,7 +12,7 @@ public class  Comment implements Serializable {
     private String description;
 @ApiModelProperty(hidden = true)
     private Date date;
-
+@ApiModelProperty(hidden = true)
     private Integer goId;
 
     private static final long serialVersionUID = 1L;

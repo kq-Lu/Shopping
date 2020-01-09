@@ -33,6 +33,7 @@ public class OrderServicegImplg implements IOrderServiceg {
 
     @Override
     public List<OrderEXg> findAllOrder() throws RuntimeException {
+
         totalPrice();
         List<OrderEXg> list = orderEXgMapper.findAll();
 
@@ -62,6 +63,8 @@ public class OrderServicegImplg implements IOrderServiceg {
         List<GO> listgo = goMapper.selectByExample(goExample);
 
         for (GO go : listgo) {
+            if(go.getOrderId()==null ||"".equals(go.getOrderId()))
+                continue;
             goodsId = go.getGoodsId();
             mount = go.getAmount();
             Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
@@ -108,10 +111,14 @@ public class OrderServicegImplg implements IOrderServiceg {
         if (order == null) {
             throw new RuntimeException("参数不能为空");
         } else {
+            order.setStatusId(2);
             order.setDate(new Date());
             Random random = new Random();
             order.setCode(random.nextInt(9000) + 10000);
+           Order order1=orderMapper.selectByPrimaryKey(order.getId());
+            order.setCustomerId(order1.getCustomerId());
             orderMapper.updateByPrimaryKey(order);
+
         }
     }
 

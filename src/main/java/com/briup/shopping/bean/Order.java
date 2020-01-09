@@ -16,7 +16,7 @@ public class Order implements Serializable {
     private Double totalprice;
     @ApiModelProperty(hidden = true)
     private Date date;
-
+@ApiModelProperty(hidden = true)
     private Integer customerId;
 
     private Integer paymentId;
