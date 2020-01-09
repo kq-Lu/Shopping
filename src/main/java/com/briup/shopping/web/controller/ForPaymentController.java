@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @Api(description = "待支付操作")
 @RequestMapping("/ForPayment")
 public class ForPaymentController {
@@ -74,107 +75,19 @@ public class ForPaymentController {
         return MessageUtil.success("删除成功");
     }
 
-    @GetMapping("/goPayment")
+    @GetMapping("/GoPayment")
     @ApiOperation(value = "去付款")
     @ApiImplicitParam(name = "id",value = "订单id",paramType = "query",dataType = "int",required = true)
-    public void goPayment(HttpServletRequest request, HttpServletResponse response, int id){
-        OrderEXg order = orderServiceg.selectById(id);
+    public void GoPayment(HttpServletRequest request, HttpServletResponse response, int id){
+        iForPaymentService.GoPayment(response,request,id);
 
-        try {
-            AlipayClient alipayClient =
-                    AlipayConfig.getAlipayClient();
-            //设置请求参数
-            AlipayTradePagePayRequest alipayRequest =
-                    new AlipayTradePagePayRequest();
 
-            AlipayTradePayModel model =
-                    new AlipayTradePayModel();
-
-            // 设定订单号 必须要写,且订单号不能重复，目前已经只是做测试，已经写死
-            model.setOutTradeNo(order.getCode()+"");
-
-            // 设置订单金额
-            model.setTotalAmount(order.getTprice()+"");
-            // 订单名字
-
-            String subject  = new String();
-            String description = new String();
-            GOExample example = new GOExample();
-            example.createCriteria().andOrderIdEqualTo(id);
-            List<GO> gos = goMapper.selectByExample(example);
-            for(GO go:gos){
-                Goods goods = goodsMapper.selectByPrimaryKey(go.getGoodsId());
-                subject = goods.getName();
-                description = goods.getDescription();
-            }
-
-            model.setSubject(subject);
-            // 订单描述
-//            model.setBody(System.currentTimeMillis()+"");
-            model.setBody(description);
-
-            // 产品码
-            model.setProductCode("FAST_INSTANT_TRADE_PAY");
-
-            // 设置参数
-            alipayRequest.setBizModel(model);
-
-            // 设置回调地址
-            alipayRequest.setReturnUrl(AlipayConfig.return_url);
-
-            String result = alipayClient.pageExecute(alipayRequest).getBody();
-
-            response.setContentType("text/html;charset=utf-8");
-            response.getWriter().println(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     @GetMapping("/callback")
     @ApiOperation(value = "付款回调")
-    public String callback(HttpServletRequest request,HttpServletResponse response) throws IOException, AlipayApiException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        Map<String,String> params = new HashMap<String,String>();
-        Map<String,String[]> requestParams = request.getParameterMap();
-        for (Iterator<String> iter = requestParams.keySet().iterator(); iter.hasNext();) {
-            String name = (String) iter.next();
-            String[] values = (String[]) requestParams.get(name);
-            String valueStr = "";
-            for (int i = 0; i < values.length; i++) {
-                valueStr = (i == values.length - 1) ? valueStr + values[i]
-                        : valueStr + values[i] + ",";
-            }
-            //乱码解决，这段代码在出现乱码时使用
-            valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
-            params.put(name, valueStr);
-        }
-
-        boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type); //调用SDK验证签名
-
-        //——请在这里编写您的程序（以下代码仅作参考）——
-        if(signVerified) {
-
-            //商户订单号
-            String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
-            iForPaymentService.goPayment(Integer.parseInt(out_trade_no));
-
-            //支付宝交易号
-            String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
-
-            //付款金额
-            String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
-
-            out.println("trade_no:"+trade_no+"\n");
-            out.println("out_trade_no:"+out_trade_no);
-            out.println("total_amount:"+total_amount);
-            out.println("已付款");
-
-        }else {
-            out.println("验签失败");
-        }
-        return null;
+    public String callback(HttpServletRequest request,HttpServletResponse response) throws IOException, AlipayApiException, InterruptedException {
+        iForPaymentService.Callback(response,request);
+//        Thread.sleep(10000);
+        return "redirect:http://localhost:9999/swagger-ui.html#";
     }
 }
