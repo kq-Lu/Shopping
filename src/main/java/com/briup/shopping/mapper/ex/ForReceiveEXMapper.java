@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ForReceiveEXMapper {
     List<ForReceiveEX> findForReceive(int status);
-    void ReceiveGoods(int id);
+    void receiveGoods(int id);
 }

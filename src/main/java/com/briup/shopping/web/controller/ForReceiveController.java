@@ -29,11 +29,11 @@ public class ForReceiveController {
         return MessageUtil.success(list);
     }
 
-    @PostMapping("/ReceiveGoods")
+    @PostMapping("/receiveGoods")
     @ApiOperation(value = "确认收货")
     @ApiImplicitParam(name = "id",value = "收货id",paramType = "query",dataType = "int",required = true)
-    public Message ReceiveGoods(int id){
-        iForReceiveService.ReceiveGoods(id);
+    public Message receiveGoods(int id){
+        iForReceiveService.receiveGoods(id);
         return MessageUtil.success("收货成功");
     }
 }

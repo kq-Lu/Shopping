@@ -9,5 +9,5 @@ public interface ForPaymentEXMapper {
     void deleteOrder(int id);
     void deleteGO(int id);
 
-    void GoPayment(int id);
+    void goPayment(int id);
 }

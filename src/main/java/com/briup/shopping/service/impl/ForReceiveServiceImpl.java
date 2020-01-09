@@ -21,7 +21,7 @@ public class ForReceiveServiceImpl implements IForReceiveService {
     }
 
     @Override
-    public void ReceiveGoods(int id) throws RuntimeException {
-        forReceiveEXMapper.ReceiveGoods(id);
+    public void receiveGoods(int id) throws RuntimeException {
+        forReceiveEXMapper.receiveGoods(id);
     }
 }

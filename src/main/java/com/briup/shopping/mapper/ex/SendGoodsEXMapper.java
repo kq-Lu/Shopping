@@ -9,5 +9,5 @@ public interface SendGoodsEXMapper {
 
     SendGoodsEX download(int id);
 
-    void SendOut(int id);
+    void sendOut(int id);
 }

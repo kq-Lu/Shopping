@@ -74,10 +74,10 @@ public class ForPaymentController {
         return MessageUtil.success("删除成功");
     }
 
-    @GetMapping("/GoPayment")
+    @GetMapping("/goPayment")
     @ApiOperation(value = "去付款")
     @ApiImplicitParam(name = "id",value = "订单id",paramType = "query",dataType = "int",required = true)
-    public void GoPayment(HttpServletRequest request, HttpServletResponse response, int id){
+    public void goPayment(HttpServletRequest request, HttpServletResponse response, int id){
         OrderEXg order = orderServiceg.selectById(id);
 
         try {
@@ -159,7 +159,7 @@ public class ForPaymentController {
 
             //商户订单号
             String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
-            iForPaymentService.GoPayment(Integer.parseInt(out_trade_no));
+            iForPaymentService.goPayment(Integer.parseInt(out_trade_no));
 
             //支付宝交易号
             String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");

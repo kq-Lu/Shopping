@@ -32,8 +32,8 @@ public class SendGoodsServiceImpl implements ISendGoodsService {
     }
 
     @Override
-    public void SendOut(int id) throws RuntimeException {
+    public void sendOut(int id) throws RuntimeException {
         orderServiceg.updateStore(id);
-        sendGoodsEXMapper.SendOut(id);
+        sendGoodsEXMapper.sendOut(id);
     }
 }

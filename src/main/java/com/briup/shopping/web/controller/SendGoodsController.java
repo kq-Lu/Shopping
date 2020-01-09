@@ -82,11 +82,11 @@ public class SendGoodsController {
         workbook.write(response.getOutputStream());
     }
 
-    @PostMapping("/SendOut")
+    @PostMapping("/sendOut")
     @ApiOperation(value = "发货")
     @ApiImplicitParam(name = "id",value = "发货订单id",paramType = "query",dataType = "id",required = true)
-    public Message SendOut(int id){
-        iSendGoodsService.SendOut(id);
+    public Message sendOut(int id){
+        iSendGoodsService.sendOut(id);
         return MessageUtil.success("发货成功");
     }
 

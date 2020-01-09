@@ -27,7 +27,7 @@
         delete from a_go where order_id=#{id}
     </delete>
 
-    <update id="GoPayment" parameterType="com.briup.shopping.bean.Order">
+    <update id="goPayment" parameterType="com.briup.shopping.bean.Order">
         update a_order set status_id=2 where id=#{id}
     </update>
 </mapper>

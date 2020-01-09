@@ -9,5 +9,5 @@ public interface IForPaymentService {
     void deleteOrderGO(int id) throws RuntimeException;
     void deleteMore(int[] ids) throws RuntimeException;
 
-    void GoPayment(int id) throws RuntimeException;
+    void goPayment(int id) throws RuntimeException;
 }

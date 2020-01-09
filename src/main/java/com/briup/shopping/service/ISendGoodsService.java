@@ -9,5 +9,5 @@ public interface ISendGoodsService {
 
     SendGoodsEX download(int id) throws RuntimeException;
 
-    void SendOut(int id) throws RuntimeException;
+    void sendOut(int id) throws RuntimeException;
 }

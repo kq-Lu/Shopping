@@ -39,7 +39,7 @@ public class ForPaymentServiceImpl implements IForPaymentService {
     }
 
     @Override
-    public void GoPayment(int id) throws RuntimeException {
-        forPaymentEXMapper.GoPayment(id);
+    public void goPayment(int id) throws RuntimeException {
+        forPaymentEXMapper.goPayment(id);
     }
 }
