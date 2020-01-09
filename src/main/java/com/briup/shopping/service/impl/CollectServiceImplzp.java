@@ -18,7 +18,7 @@ public class CollectServiceImplzp implements ICollectServicezp {
     private CollectEXMapperzp collectEXMapperzp;
 
     @Override
-    public void saveOrUpdate(int gid,int cid) throws RuntimeException {
+    public void insert(int gid,int cid) throws RuntimeException {
 
         Collect collect1=collectEXMapperzp.selectBygidandcid(gid,cid);
         if(collect1==null||"".equals(collect1)){

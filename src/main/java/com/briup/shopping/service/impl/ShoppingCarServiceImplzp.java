@@ -27,16 +27,16 @@ public class ShoppingCarServiceImplzp implements IShoppingCarServicezp {
     private GoEXMapper goEXMapper;
 
     @Override
-    public void saveOrUpdate(Shoppingcar shoppingcar) throws RuntimeException {
+    public void insert(Shoppingcar shoppingcar) throws RuntimeException {
         if(shoppingcar==null){
             throw new RuntimeException("参数为空");
         }
         if(shoppingcar.getId()==null){
             shoppingcarMapper.insert(shoppingcar);
         }
-        else{
-            shoppingcarMapper.updateByPrimaryKey(shoppingcar);
-        }
+        //else{
+            //shoppingcarMapper.updateByPrimaryKey(shoppingcar);
+       // }
 
     }
 

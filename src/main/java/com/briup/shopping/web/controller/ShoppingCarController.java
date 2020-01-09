@@ -19,19 +19,19 @@ import java.util.List;
 public class ShoppingCarController {
     @Autowired
     private IShoppingCarServicezp iShoppingCarServicezp;
-    @PostMapping("/saveOrUpdate")
-    @ApiOperation(value = "购物车的添加和修改")
-    public Message saveOrUpdate(Shoppingcar shoppingcar){
-        iShoppingCarServicezp.saveOrUpdate(shoppingcar);
+    @PostMapping("/insertshoppingcar")
+    @ApiOperation(value = "添加购物车")
+    public Message insertshoppingcar(Shoppingcar shoppingcar){
+        iShoppingCarServicezp.insert(shoppingcar);
         return MessageUtil.success(shoppingcar);
     }
     @GetMapping("/deleteById")
-    @ApiOperation(value = "根据ID删除某一个购物车")
+    @ApiOperation(value = "删除购物车中所有订单项")
     public Message deleteById(int id){
         iShoppingCarServicezp.deleteById(id);
         return MessageUtil.success();
     }
-    @GetMapping("deleteAll")
+    /*@GetMapping("deleteAll")
     @ApiOperation(value="批量删除购物车")
     public Message deletaAll(int[] ids){
         for(int id:ids){
@@ -39,15 +39,15 @@ public class ShoppingCarController {
 
         }
         return MessageUtil.success();
-    }
+    }*/
     @GetMapping("/findAll")
-    @ApiOperation(value = "查询所有购物车")
+    @ApiOperation(value = "查询购物车中的商品列表")
     public Message findAll(){
         List<ShoppingCarEXzp> list=iShoppingCarServicezp.findAll();
         return MessageUtil.success(list);
     }
     @GetMapping("/findById")
-    @ApiOperation(value = "根据id查找某个购物车")
+    @ApiOperation(value = "根据id查找某个购物车的商品列表")
     public Message findById(int id){
         ShoppingCarEXzp shoppingCarEXzp=iShoppingCarServicezp.findById(id);
         return MessageUtil.success(shoppingCarEXzp);

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IShoppingCarServicezp {
     //添加购物车
-    void saveOrUpdate(Shoppingcar shoppingcar) throws RuntimeException;
+    void insert(Shoppingcar shoppingcar) throws RuntimeException;
     //删除某一个购物车时删除下面所有的订单项
     void deleteById(int id) throws RuntimeException;
     //删除某一个购物车指定的某一个订单项

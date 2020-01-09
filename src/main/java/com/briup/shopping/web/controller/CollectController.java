@@ -21,10 +21,10 @@ import java.util.List;
 public class CollectController {
     @Autowired
     private ICollectServicezp iCollectServicezp;
-    @PostMapping("/saveOrUpdate")
-    @ApiOperation(value="收藏信息的添加和更改")
+    @PostMapping("/insert")
+    @ApiOperation(value="添加收藏信息")
     public Message saveOrUpdate(int gid,int sid){
-        iCollectServicezp.saveOrUpdate(gid, sid);
+        iCollectServicezp.insert(gid, sid);
         return MessageUtil.success();
     }
     @GetMapping("/deleteById")
