@@ -1,10 +1,11 @@
 package com.briup.shopping.service.impl;
 
-import com.briup.shopping.bean.GOExample;
-import com.briup.shopping.bean.Shoppingcar;
+import com.briup.shopping.bean.*;
 import com.briup.shopping.bean.ex.ShoppingCarEXzp;
+import com.briup.shopping.mapper.CommentMapper;
 import com.briup.shopping.mapper.GOMapper;
 import com.briup.shopping.mapper.ShoppingcarMapper;
+import com.briup.shopping.mapper.ex.GoEXMapper;
 import com.briup.shopping.mapper.ex.ShoppingCarEXMapperzp;
 import com.briup.shopping.service.IShoppingCarServicezp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ShoppingCarServiceImplzp implements IShoppingCarServicezp {
     private ShoppingCarEXMapperzp shoppingCarEXMapper;
     @Autowired
     private GOMapper goMapper;
+    @Autowired
+    private CommentMapper commentMapper;
+    @Autowired
+    private GoEXMapper goEXMapper;
 
     @Override
     public void saveOrUpdate(Shoppingcar shoppingcar) throws RuntimeException {
@@ -37,15 +42,22 @@ public class ShoppingCarServiceImplzp implements IShoppingCarServicezp {
 
     @Override
     public void deleteById(int id) throws RuntimeException {
-        shoppingcarMapper.deleteByPrimaryKey(id);
-        GOExample example=new GOExample();
+        //删除某一个购物车时删除该购物车中的所有订单项
+        shoppingCarEXMapper.deleteById(id);
+        GOExample example = new GOExample();
         example.createCriteria().andShoppingcarIdEqualTo(id);
         goMapper.deleteByExample(example);
+        shoppingcarMapper.deleteByPrimaryKey(id);
+
+
     }
 
     @Override
-    public void deleteBySId(int id) throws RuntimeException {
-        shoppingCarEXMapper.deleteBySId(id);
+    public void deletego(int sid,int oid) throws RuntimeException {
+        //删除某一个购物车中的指定的一个订单项
+        shoppingCarEXMapper.deleteBygo(sid,oid);
+
+
     }
 
     @Override
@@ -60,5 +72,23 @@ public class ShoppingCarServiceImplzp implements IShoppingCarServicezp {
         return shoppingCarEXzp;
     }
 
+    @Override
+    public void saveOrUpdate(int gid,int sid) throws RuntimeException {
+       GO go=shoppingCarEXMapper.selectBygIdandsid(gid,sid);
+       if(go==null||"".equals(go)){
+           shoppingCarEXMapper.insert(gid, sid);
+       }
+       else{
+           //go.setAmount(go.getAmount()+1);
+           //System.out.println(go.getAmount());
+           shoppingCarEXMapper.update1(go.getAmount()+1,go.getId());
+           }
+       }
 
-}
+
+
+
+    }
+
+
+

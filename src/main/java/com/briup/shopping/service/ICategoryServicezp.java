@@ -9,4 +9,6 @@ public interface ICategoryServicezp {
     void saveOrUpdate(Category category) throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
     List<CategoryEXzp> findAll() throws RuntimeException;
+    CategoryEXzp findById(int id) throws RuntimeException;
+    List<CategoryEXzp> findByWord(String word) throws RuntimeException;
 }

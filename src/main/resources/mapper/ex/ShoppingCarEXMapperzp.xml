@@ -31,4 +31,39 @@
         from a_goods g,a_go o
         where g.id=o.goods_id and o.shoppingcar_id=#{id}
     </select>
+    <resultMap id="abo" type="com.briup.shopping.bean.ex.resultzp">
+        <association property="id" column="id" select="update"></association>
+    </resultMap>
+   <select id="deleteById" resultMap="abo">
+       select c.id id from a_go go,a_comment c where go.shoppingcar_id=#{id} and c.go_id=go.id
+   </select>
+<update id="update">
+    update a_comment set go_id=null where id=#{id}
+</update>
+<select id="selectBygIdandsid" resultType="com.briup.shopping.bean.GO">
+    select * from a_go where  goods_id=#{gid} and shoppingcar_id=#{sid}
+</select>
+    <insert id="insert" parameterType="com.briup.shopping.bean.GO">
+        insert into a_go(goods_id,amount,shoppingcar_id) values (#{gid},1,#{sid})
+    </insert>
+    <update id="update1">
+        update a_go set amount=#{amount} where id=#{id}
+    </update>
+    <update id="updatecomment">
+         update a_comment set go_id=null where go_id=#{oid}
+    </update>
+    <delete id="deleteorderIntm">
+        delete from a_go where shoppingcar_id=#{sid} and id=#{oid}
+    </delete>
+    <resultMap id="abb" type="com.briup.shopping.bean.ex.resultzp">
+        <association property="id" column="id" select="update2"></association>
+        <association property="shoppingcar_id" column="rid" select="delete"></association>
+    </resultMap>
+    <delete id="deleteBygo">
+        delete from a_go where shoppingcar_id=#{sid} and id=#{oid}
+    </delete>
+
+
+
+
 </mapper>

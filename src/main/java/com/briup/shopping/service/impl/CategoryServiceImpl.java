@@ -20,13 +20,12 @@ public class CategoryServiceImpl implements ICategoryServicezp {
 
     @Override
     public void saveOrUpdate(Category category) throws RuntimeException {
-        if(category==null){
+        if (category == null) {
             throw new RuntimeException("参数为空");
         }
-        if(category.getId()==null){
+        if (category.getId() == null) {
             categoryMapper.insert(category);
-        }
-        else {
+        } else {
             categoryMapper.updateByPrimaryKey(category);
         }
     }
@@ -38,8 +37,25 @@ public class CategoryServiceImpl implements ICategoryServicezp {
 
     @Override
     public List<CategoryEXzp> findAll() throws RuntimeException {
-       List<CategoryEXzp> list=categoryEXMapper.findAllcategory();
-       return list;
+        List<CategoryEXzp> list = categoryEXMapper.findAllcategory();
+        return list;
 
+    }
+
+    @Override
+    public CategoryEXzp findById(int id) throws RuntimeException {
+        CategoryEXzp categoryEXzp = categoryEXMapper.findById(id);
+        return categoryEXzp;
+    }
+
+    @Override
+    public List<CategoryEXzp> findByWord(String word) throws RuntimeException {
+        word = word == null ? "" : word;
+        if (word == null || "".equals(word)) {
+            return categoryEXMapper.findAllcategory();
+        } else {
+            word = "%" + word + "%";
+            return categoryEXMapper.findByWord(word);
+        }
     }
 }

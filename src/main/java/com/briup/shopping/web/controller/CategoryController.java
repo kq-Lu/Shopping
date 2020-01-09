@@ -28,7 +28,7 @@ public class CategoryController {
         return MessageUtil.success();
     }
     @GetMapping("/deleteById")
-    @ApiOperation(value = "分类的删除")
+    @ApiOperation(value = "根据id删除分类")
     public Message deleteById(int id){
         iCategoryServicezp.deleteById(id);
         return MessageUtil.success();
@@ -47,4 +47,17 @@ public class CategoryController {
         List<CategoryEXzp> list=iCategoryServicezp.findAll();
         return MessageUtil.success(list);
     }
+    @GetMapping("/findById")
+    @ApiOperation(value = "根据id查询分类")
+    public Message findById(int id){
+        CategoryEXzp categoryEXzp=iCategoryServicezp.findById(id);
+        return MessageUtil.success(categoryEXzp);
+    }
+    @GetMapping("/findByword")
+    @ApiOperation(value ="根据关键字查询某一个分类")
+    public Message findByword(String word){
+        List<CategoryEXzp> list=iCategoryServicezp.findByWord(word);
+        return MessageUtil.success(list);
+    }
+
 }

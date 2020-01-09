@@ -97,6 +97,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.briup.shopping.bean.Shoppingcar">
+    <selectKey keyProperty="id" resultType="int" keyColumn="id" order="AFTER">
+    SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into a_shoppingcar (id, customer_id)
     values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER})
   </insert>

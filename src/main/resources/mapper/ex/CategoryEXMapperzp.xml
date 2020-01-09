@@ -2,15 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.shopping.mapper.ex.CategoryEXMapper">
     <resultMap id="abc" type="com.briup.shopping.bean.ex.CategoryEXzp">
-        <id property="id" column="id"></id>
+        <id property="id" column="cid"></id>
         <result property="name" column="name"></result>
         <result property="description" column="description"></result>
-        <collection property="goodsEXzp1List" ofType="com.briup.shopping.bean.ex.GoodsEXzp1" ></collection>
+        <collection property="goodsEXzp1List" column="cid" ofType="com.briup.shopping.bean.ex.GoodsEXzp2" select="selectgoods"></collection>
     </resultMap>
-    <select id="findAllcategory" resultType="com.briup.shopping.bean.ex.GoodsEXzp1">
-        select c.* ,g.*
-        from a_category c,a_goods g
-        where c.id=g.category_id
-
+    <select id="findAllcategory" resultMap="abc">
+        select c.id cid ,c.name name ,c.description
+        from a_category c
+    </select>
+    <select id="selectgoods" resultType="com.briup.shopping.bean.ex.GoodsEXzp2">
+        select g.*
+        from a_goods g
+        where g.category_id=#{id}
+    </select>
+    <resultMap id="abd" type="com.briup.shopping.bean.ex.CategoryEXzp">
+        <id property="id" column="cid"></id>
+        <result property="name" column="name"></result>
+        <result property="description" column="description"></result>
+        <collection property="goodsEXzp1List" column="cid" ofType="com.briup.shopping.bean.ex.GoodsEXzp2" select="selectgoods1"></collection>
+    </resultMap>
+    <select id="findById" resultMap="abd">
+        select c.id cid ,c.name name ,c.description
+        from a_category c
+        where c.id=#{id}
+    </select>
+    <select id="selectgoods1" resultType="com.briup.shopping.bean.ex.GoodsEXzp2">
+        select g.*
+        from a_goods g
+        where g.category_id=#{id}
+    </select>
+    <resultMap id="abe" type="com.briup.shopping.bean.ex.CategoryEXzp">
+        <id column="id" property="id"></id>
+        <collection property="goodsEXzp1List" column="id" ofType="com.briup.shopping.bean.ex.GoodsEXzp2" select="sele"></collection>
+    </resultMap>
+    <select id="findByWord" resultMap="abe">
+        select c.id id,c.name name,c.description description
+        from a_category c
+        where c.name like #{word}
+    </select>
+    <select id="sele" resultType="com.briup.shopping.bean.ex.GoodsEXzp2">
+        select g.name name,g.price price,g.description description,g.storage storage
+        from a_goods g
+        where g.category_id=#{id}
     </select>
 </mapper>

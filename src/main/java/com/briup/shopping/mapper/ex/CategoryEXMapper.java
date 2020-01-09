@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface CategoryEXMapper {
     List<CategoryEXzp> findAllcategory();
+
+    CategoryEXzp findById(int id);
+
+    List<CategoryEXzp> findByWord(String word);
 }
