@@ -23,8 +23,8 @@ public class CollectController {
     private ICollectServicezp iCollectServicezp;
     @PostMapping("/saveOrUpdate")
     @ApiOperation(value="收藏信息的添加和更改")
-    public Message saveOrUpdate(Collect collect){
-        iCollectServicezp.saveOrUpdate(collect);
+    public Message saveOrUpdate(int gid,int sid){
+        iCollectServicezp.saveOrUpdate(gid, sid);
         return MessageUtil.success();
     }
     @GetMapping("/deleteById")

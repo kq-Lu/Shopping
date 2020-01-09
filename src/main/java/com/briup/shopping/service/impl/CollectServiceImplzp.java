@@ -18,17 +18,16 @@ public class CollectServiceImplzp implements ICollectServicezp {
     private CollectEXMapperzp collectEXMapperzp;
 
     @Override
-    public void saveOrUpdate(Collect collect) throws RuntimeException {
-        if(collect==null){
-            throw new RuntimeException("参数为空");
+    public void saveOrUpdate(int gid,int cid) throws RuntimeException {
+
+        Collect collect1=collectEXMapperzp.selectBygidandcid(gid,cid);
+        if(collect1==null||"".equals(collect1)){
+           collectMapper.insert(collect1);
         }
-        if(collect.getId()==null){
-           collectMapper.insert(collect);
+        else{
+            System.out.println("您已收藏");
         }
-        else
-        {
-            collectMapper.updateByPrimaryKey(collect);
-        }
+
     }
 
     @Override

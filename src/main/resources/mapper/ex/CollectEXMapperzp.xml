@@ -18,4 +18,7 @@
         from a_collect c,a_goods g,a_customer co
         where c.goods_id=g.id and c.customer_id=co.id and (g.name like #{word} or co.username like #{word})
     </select>
+    <select id="selectBygidandcid" resultType="com.briup.shopping.bean.Collect">
+        select * from a_collect where goods_id=#{gid} and customer_id=#{cid}
+    </select>
 </mapper>
