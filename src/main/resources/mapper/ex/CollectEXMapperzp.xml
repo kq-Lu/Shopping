@@ -21,4 +21,7 @@
     <select id="selectBygidandcid" resultType="com.briup.shopping.bean.Collect">
         select * from a_collect where goods_id=#{gid} and customer_id=#{cid}
     </select>
+    <insert id="insertto" parameterType="com.briup.shopping.bean.Collect">
+        insert into a_collect(goods_id,customer_id) values (#{gid},#{cid})
+    </insert>
 </mapper>

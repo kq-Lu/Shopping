@@ -22,7 +22,7 @@ public class CollectServiceImplzp implements ICollectServicezp {
 
         Collect collect1=collectEXMapperzp.selectBygidandcid(gid,cid);
         if(collect1==null||"".equals(collect1)){
-           collectMapper.insert(collect1);
+           collectEXMapperzp.insertto(gid,cid);
         }
         else{
             System.out.println("您已收藏");

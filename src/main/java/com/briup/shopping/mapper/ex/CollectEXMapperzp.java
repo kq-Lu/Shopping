@@ -13,4 +13,6 @@ public interface CollectEXMapperzp {
     CollectEXzp findById(int id);
 
     Collect selectBygidandcid(int gid,int cid);
+
+    void insertto(int gid, int cid);
 }
